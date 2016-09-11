@@ -1,0 +1,57 @@
+<template name="character_list_page">
+  <div class='character_list'>
+    <div class='title'>Список персонажей</div>
+    <ul>
+      {{#each character_list}}
+        <li class='character {{selectedClass}}'>{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class='character_edit'>
+    <div class='title'>Редатикторвание персонажа <b>{{selectedCharacter.name}}</b></div>
+    <form name='character_edit'>
+      <div class='main'>
+        <div class='name'><span>Имя персонажа:</span><input type='text' name='name' value='{{selectedCharacter.name}}'></div>
+        <div class='class'><span>Класс персонажа:</span><input type='text' name='class' value='{{selectedCharacter.class}}'></div>
+        <div>
+          <span>Харастеристика боя:</span>
+          <select name='main_props'>
+          {{#each characterMainAttr selectedCharacter.main_props}}
+            <option name='{{id}}' {{selected}}>{{name}}</option>
+          {{/each}}
+          </select>
+        </div>  
+      </div>
+      <div class='props'>
+        <b>Характеристики:</b>
+        <div><span>Сила:</span><input type='text' name='str' value='{{selectedCharacter.props.str}}'></div>
+        <div><span>Ловкость:</span><input type='text' name='agi' value='{{selectedCharacter.props.agi}}'></div>
+        <div><span>Телосложение:</span><input type='text' name='sta' value='{{selectedCharacter.props.sta}}'></div>
+        <div><span>Интелект:</span><input type='text' name='int' value='{{selectedCharacter.props.int}}'></div>
+        <div><span>Мудрость:</span><input type='text' name='wis' value='{{selectedCharacter.props.wis}}'></div>
+        <div><span>Харизма:</span><input type='text' name='cha' value='{{selectedCharacter.props.cha}}'></div>
+        <div><span>Мастерство:</span><input type='text' name='mas' value='{{selectedCharacter.props.mas}}'></div>
+        <div><span>Жизни:</span><input type='text' name='hp' value='{{selectedCharacter.props.hp}}'></div>
+      </div>
+      <div class='lvls'>
+        <b>Уровни:</b>
+        <div class='exp_hero'><span>Опыт персонажа:</span><input type='text' name='exp_hero' value='{{selectedCharacter.exp.hero}}'></div>
+        <div class='exp_hp'><span>Опыт здоровья:</span><input type='text' name='exp_hp' value='{{selectedCharacter.exp.hp}}'></div>
+        <div class='exp_melle'><span>Опыт ближнего боя:</span><input type='text' name='exp_melle' value='{{selectedCharacter.exp.melle}}'></div>
+        <div class='exp_fire'><span>Опыт магии огня:</span><input type='text' name='exp_fire' value='{{selectedCharacter.exp.magic.fire}}'></div>
+        <div class='exp_water'><span>Опыт магии воды:</span><input type='text' name='exp_water' value='{{selectedCharacter.exp.magic.water}}'></div>
+        <div class='exp_earth'><span>Опыт магии земли:</span><input type='text' name='exp_earth' value='{{selectedCharacter.exp.magic.earth}}'></div>
+        <div class='exp_air'><span>Опыт магии воздуха:</span><input type='text' name='exp_air' value='{{selectedCharacter.exp.magic.air}}'></div>
+        <div class='exp_shine'><span>Опыт магии света:</span><input type='text' name='exp_shine' value='{{selectedCharacter.exp.magic.shine}}'></div>
+        <div class='exp_dark'><span>Опыт магии тьмы:</span><input type='text' name='exp_dark' value='{{selectedCharacter.exp.magic.dark}}'></div>
+      </div>
+      <div class='buttons'>
+        <div class='character_upsert'>Сохранить</div>
+        {{#if selectedCharacter}}
+          <div class='character_delete'>Удалить</div>
+          <div class='character_clear'>Очистить</div>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+</template>

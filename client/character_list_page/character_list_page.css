@@ -1,0 +1,73 @@
+/* character_list */
+.character_list {
+	display: inline-block;
+	width: 200px;
+	float:left;
+	padding: 5px;
+	border: 2px solid black;
+
+}
+.character_list .title {
+	font-size: 18px;
+}
+.character_list .character {
+	padding-left: 15px;
+	cursor: pointer;
+}
+.character_list .character.selected {
+	font-weight: bold;
+}
+
+/* character_edit */
+.character_edit {
+	display: inline-block;
+	float:left;
+	padding: 5px;
+}
+
+.character_edit .main div span {
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	margin-right: 5px;
+}
+.character_edit .main div input {
+	width: 120px;
+}
+
+.character_edit .props div span {
+	display: inline-block;
+	width: 110px;
+	text-align: right;
+	margin-right: 5px;
+}
+.character_edit .props div input {
+	display: inline-block;
+	width: 25px;
+}
+
+.character_edit .lvls div span {
+	display: inline-block;;
+	width: 150px;
+	text-align: right;
+	margin-right: 5px;
+}
+.character_edit .lvls div input {
+	display: inline-block;;
+	width: 100px;
+}
+
+.character_edit .buttons {
+
+}
+
+.character_edit .character_upsert,
+.character_edit .character_delete,
+.character_edit .character_clear {
+	float: left;
+	width: 100px;
+	height: 60px;
+	border: 2px solid black;
+	background: transparent;
+	cursor: pointer;
+}

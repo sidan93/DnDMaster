@@ -1,0 +1,171 @@
+<template name='fight_page'>
+  <div class='fight_page'>
+    {{#each character_list}}
+      <div class='character'>
+        <form name='{{_id}}' class='fight_form'>
+          <div class='character_info'>
+            <div class='title'>Персонаж: <b>{{name}}</b></div>
+            <div class='modifier_title' name='str'>
+              <div class='info'>Сила: {{props.str}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>  
+            <div class='modifier_title' name='agi'>
+              <div class='info'>Ловкость: {{props.agi}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+            <div class='modifier_title' name='sta'>
+              <div class='info'>Телосложение: {{props.sta}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+            <div class='modifier_title' name='int'>
+              <div class='info'>Интелект: {{props.int}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+            <div class='modifier_title' name='wis'>
+              <div class='info'>Мудрость: {{props.wis}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+            <div class='modifier_title' name='cha'>
+              <div class='info'>Харизма: {{props.cha}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+            <div class='modifier_title' name='mas'>
+              <div class='info'>Мастерство: {{props.mas}}</div>
+              <div class='modifier'><div class='add'>+1</div><div class='rem'>-1</div></div>
+            </div>
+          </div>
+          <div class='character_modifier'>
+            <div class='hp'>
+              <div class='modifier_title' name='hp'>
+                <div class='info'>
+                  <div>Жизни персонажа:</div><div class='current'>{{fight.hp_current}}</div>/<div class='max'>{{props.hp}}</div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='hp_change'>
+                  <div class='rem'>Урон</div>
+                  <div class='add'>Хил</div>
+                  <div class='modifier_title max_hp' name='max_hp'>
+                    <div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            <div class='set_damage'>
+              <div class='modifier_title' name='damage'>
+                <div class='info'><div>Урон ближним:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_fire'>
+                <div class='info'><div>Урон огнем:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_fire'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_water'>
+                <div class='info'><div>Урон водой:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_water'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_earth'>
+                <div class='info'><div>Урон землей:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_earth'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_air'>
+                <div class='info'><div>Урон воздухом:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_air'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_shine'>
+                <div class='info'><div>Урон светом:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_shine'><div class='add'>Урон</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='damage_dark'>
+                <div class='info'><div>Урон тьмой:</div></div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='set_damage_dark'><div class='add'>Урон</div>
+                </div>
+              </div>
+            </div>
+            <div class='exp'>
+              <div class='modifier_title' name='exp_hp'>
+                <div class='info'>
+                  <div class='title'>Опыт здоровья: <b>{{exp.hp}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_hp_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_melle'>
+                <div class='info'>
+                  <div class='title'>Опыт ближнего боя: <b>{{exp.melle}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_melle_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_fire'>
+                <div class='info'>
+                  <div class='title'>Опыт магии огня: <b>{{exp.magic.fire}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_fire_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_water'>
+                <div class='info'>
+                  <div class='title'>Опыт магии воды: <b>{{exp.magic.water}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_water_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_earth'>
+                <div class='info'>
+                  <div class='title'>Опыт магии земли: <b>{{exp.magic.earth}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_earth_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_air'>
+                <div class='info'>
+                  <div class='title'>Опыт магии воздуха: <b>{{exp.magic.air}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_air_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_shine'>
+                <div class='info'>
+                  <div class='title'>Опыт магии света: <b>{{exp.magic.shine}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_shine_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+              <div class='modifier_title' name='exp_dark'>
+                <div class='info'>
+                  <div class='title'>Опыт магии тьмы: <b>{{exp.magic.dark}}</b></div>
+                </div>
+                <div class='modifier'>
+                  <input class='value' type='text' name='exp_dark_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class='character_lvl'>
+          </div>
+        </form>
+      </div>  
+    {{/each}}
+  </div>
+</template>
