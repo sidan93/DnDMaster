@@ -1,25 +1,133 @@
 <head>
-  <title>DnDMaster</title>
+  <title>ДнД мастер</title>
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
+<body> 
+  {{> main}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="main">
+  <div class="wrapper">
+    <div class="header">
+      {{> menu}}
+    </div>
+    <div class="content">
+      {{> content}}
+    </div>
+    <div class="footer">
+      {{> menu}}
+    </div>
+  </div>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
+<template name="menu">
   <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+    <li class="main_page">Главная</li>
+    <li class="character_list_page">Редактирование персонажей</li>
+    <li class="fight_page">Бой</li>
   </ul>
+</template>
+
+<template name="content">
+  {{#if show_page 1}}
+    {{> main_page}}
+  {{/if}}
+  {{#if show_page 2}}
+    {{> character_list_page}}
+  {{/if}}
+  {{#if show_page 3}}
+    {{> fight_page}}   
+  {{/if}}
+</template>
+
+<template name="main_page">
+  Главная страница
+</template> 
+
+<template name="character_list_page">
+  <div class='character_list'>
+    <div class='title'>Список персонажей</div>
+    <ul>
+      {{#each character_list}}
+        <li class='character {{selectedClass}}'>{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class='character_edit'>
+    <div class='title'>Редатикторвание персонажа <b>{{selectedCharacter.name}}</b></div>
+    <form name='character_edit'>
+      <div class='main'>
+        <div class='name'><span>Имя персонажа:</span><input type='text' name='name' value='{{selectedCharacter.name}}'></div>
+        <div class='class'><span>Класс персонажа:</span><input type='text' name='class' value='{{selectedCharacter.class}}'></div>
+        <div>
+          <span>Харастеристика боя:</span>
+          <select name='main_props'>
+          {{#each characterMainAttr selectedCharacter.main_props}}
+            <option name='{{id}}' {{selected}}>{{name}}</option>
+          {{/each}}
+          </select>
+        </div>  
+      </div>
+      <div class='props'>
+        <b>Характеристики:</b>
+        <div><span>Сила:</span><input type='text' name='str' value='{{selectedCharacter.props.str}}'></div>
+        <div><span>Ловкость:</span><input type='text' name='agi' value='{{selectedCharacter.props.agi}}'></div>
+        <div><span>Телосложение:</span><input type='text' name='sta' value='{{selectedCharacter.props.sta}}'></div>
+        <div><span>Интелект:</span><input type='text' name='int' value='{{selectedCharacter.props.int}}'></div>
+        <div><span>Мудрость:</span><input type='text' name='wis' value='{{selectedCharacter.props.wis}}'></div>
+        <div><span>Харизма:</span><input type='text' name='cha' value='{{selectedCharacter.props.cha}}'></div>
+        <div><span>Мастерство:</span><input type='text' name='mas' value='{{selectedCharacter.props.mas}}'></div>
+        <div><span>Жизни:</span><input type='text' name='hp' value='{{selectedCharacter.props.hp}}'></div>
+      </div>
+      <div class='lvls'>
+        <b>Уровни:</b>
+        <div class='exp_hero'><span>Опыт персонажа:</span><input type='text' name='exp_hero' value='{{selectedCharacter.exp.hero}}'></div>
+        <div class='exp_hp'><span>Опыт здоровья:</span><input type='text' name='exp_hp' value='{{selectedCharacter.exp.hp}}'></div>
+        <div class='exp_melle'><span>Опыт ближнего боя:</span><input type='text' name='exp_melle' value='{{selectedCharacter.exp.melle}}'></div>
+        <div class='exp_fire'><span>Опыт магии огня:</span><input type='text' name='exp_fire' value='{{selectedCharacter.exp.magic.fire}}'></div>
+        <div class='exp_water'><span>Опыт магии воды:</span><input type='text' name='exp_water' value='{{selectedCharacter.exp.magic.water}}'></div>
+        <div class='exp_earth'><span>Опыт магии земли:</span><input type='text' name='exp_earth' value='{{selectedCharacter.exp.magic.earth}}'></div>
+        <div class='exp_air'><span>Опыт магии воздуха:</span><input type='text' name='exp_air' value='{{selectedCharacter.exp.magic.air}}'></div>
+        <div class='exp_shine'><span>Опыт магии света:</span><input type='text' name='exp_shine' value='{{selectedCharacter.exp.magic.shine}}'></div>
+        <div class='exp_dark'><span>Опыт магии тьмы:</span><input type='text' name='exp_dark' value='{{selectedCharacter.exp.magic.dark}}'></div>
+      </div>
+      <div class='buttons'>
+        <div class='character_upsert'>Сохранить</div>
+        {{#if selectedCharacter}}
+          <div class='character_delete'>Удалить</div>
+          <div class='character_clear'>Очистить</div>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name='fight_page'>
+  <div class='fight_page'>
+    {{#each character_list}}
+      <form name='{{_id}}' class='fight_form'>
+        <div class='character'>
+          <div class='title'>Персонаж: <b>{{name}}</b></div>
+          <div class='modifier_title' name='hp'>
+            <div class='info'>
+              <div>Жизни персонажа:</div><div class='current'>{{fight.hp_current}}</div>/<div class='max'>{{props.hp}}</div>
+            </div>
+            <div class='modifier'>
+              <input class='value' type='text' name='hp_change'><div class='rem'>Урон</div><div class='add'>Хил</div>
+            </div>
+          </div>
+          <div class='exp'>
+            <div class='modifier_title' name=exp_hp>
+              <div class='info'>
+                <div class='title'>Опыт здоровья: <b>{{exp.hp}}</b></div>
+              </div>
+              <div class='modifier'>
+                <input class='value' type='text' name='exp_hp_change'><div class='add'>Добавить</div><div class='rem'>Отнять</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    {{/each}}
+  </div>
 </template>
