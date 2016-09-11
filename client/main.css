@@ -149,6 +149,10 @@
 	width: 20px;
 }
 
+.fight_page .max_hp {
+	display: inline-block;
+}
+
 .fight_page .character_modifier {
 	display: inline-block;
 	border: 1px solid black;

@@ -129,15 +129,6 @@ Template.fight_page.helpers({
 				return character;
 			}
 		});
-	},
-
-	get_magic_modifier: function() {
-		return [
-			{
-				name: 'fire',
-				title: 'Опыт магии огня'
-			}
-		];
 	}
 });
 
@@ -167,6 +158,10 @@ Template.fight_page.events({
 			}
 
 			form.hp_change.value = null;
+		}
+		if (modifier == 'max_hp') {
+			var value = parseInt(form.hp_change.value || 0) || 0;
+			character.props.hp += value * modifierDamage;
 		}
 		if (modifier == 'damage') {
 			var value = parseInt(form.set_damage.value || 0) || 0;
