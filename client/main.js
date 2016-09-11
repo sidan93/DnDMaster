@@ -129,6 +129,15 @@ Template.fight_page.helpers({
 				return character;
 			}
 		});
+	},
+
+	get_magic_modifier: function() {
+		return [
+			{
+				name: 'fire',
+				title: 'Опыт магии огня'
+			}
+		];
 	}
 });
 
@@ -159,10 +168,42 @@ Template.fight_page.events({
 
 			form.hp_change.value = null;
 		}
-		if (modifier == 'exp_hp') {
+		if (modifier == 'damage') {
+			var value = parseInt(form.set_damage.value || 0) || 0;
+			var modifier_value = Math.max(((character.main_props == 'str' ? character.props.str : character.props.agi) - 10) / 2 + 1, 1)
+			character.exp.melle += value * modifier_value;
+		}
+		if (['damage_fire', 'damage_water', 'damage_earth', 'damage_air', 'damage_shine', 'damage_dark'].indexOf(modifier) != -1) {
+			var anti = {
+				'fire': 'water',
+				'water': 'fire',
+				'earth': 'air',
+				'air': 'earth',
+				'shine': 'dark',
+				'dark': 'shine'
+			};
+			var school = modifier.replace('damage_', '');
+			var value = parseInt(form['set_damage_' + school].value || 0) || 0;
+			var stats = value * ((character.props.wis - 10) / 2 + 1);
+			character.exp.magic[school] += stats;
+			character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - stats / 2, 0)
+		}
+		if (modifier == 'exp_melle') {
+			var value = parseInt(form.exp_melle_change.value || 0) || 0;
+			character.exp.melle += value * modifierDamage;
+		}
+ 		if (modifier == 'exp_hp') {
 			var value = parseInt(form.exp_hp_change.value || 0) || 0;
 			character.exp.hp += value * modifierDamage;
-			form.exp_hp_change.value = null;
+		}
+		if (['str', 'agi', 'sta', 'int', 'wis', 'cha', 'mas'].indexOf(modifier) != -1) {
+			character.props[modifier] += modifierDamage;
+		}
+		if (['exp_fire', 'exp_water','exp_earth', 'exp_air', 'exp_shine', 'exp_dark'].indexOf(modifier) != -1) {
+			var value = parseInt(form[modifier + '_change'].value || 0) || 0;
+			var school = modifier.replace('exp_', '');
+			character.exp.magic[school] += value * modifierDamage;
+
 		}
 		$('.fight_page form').trigger('reset'); 
 		Meteor.call('UpdateCharacter', form.name, character);
