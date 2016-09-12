@@ -3,8 +3,8 @@
 	display: inline-block;
 	width: 200px;
 	float:left;
+	margin: 5px;
 	padding: 5px;
-	border: 2px solid black;
 
 }
 .character_list .title {
@@ -46,13 +46,13 @@
 	width: 25px;
 }
 
-.character_edit .lvls div span {
+.character_edit .exp div span {
 	display: inline-block;;
 	width: 150px;
 	text-align: right;
 	margin-right: 5px;
 }
-.character_edit .lvls div input {
+.character_edit .exp div input {
 	display: inline-block;;
 	width: 100px;
 }
@@ -66,8 +66,4 @@
 .character_edit .character_clear {
 	float: left;
 	width: 100px;
-	height: 60px;
-	border: 2px solid black;
-	background: transparent;
-	cursor: pointer;
 }

@@ -20,6 +20,6 @@ Template.menu.events({
 
 Template.content.helpers({
 	show_page: function(id) {
-		return (Session.get('page_id') || 1) === id;
+		return (Session.get('page_id') || 2) === id;
 	}
 });

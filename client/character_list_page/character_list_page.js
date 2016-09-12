@@ -34,6 +34,9 @@ Template.character_list_page.events({
 					shine: parseInt(form.exp_shine.value || 0),
 					dark: parseInt(form.exp_dark.value || 0)
 				}
+			},
+
+			lvl: {
 			}
 		};
 

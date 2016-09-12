@@ -5,30 +5,20 @@
 }
 
 .wrapper {
-	margin: 0 auto;
 	width: 100%;
 	height: 100%;
-	background: red;
+	background: #d6d6d6;
 }
 
 /** header */
 .header {
-	width: 100%;
-	height: 50px;
-	background: yellow;
-}
-
-.header ul li {
 	display: inline-block;
-	width: 200px;
-	height: 40px;
-	border: 2px solid red;
-	cursor: pointer;
+	height: 30px;
+	margin: 10px auto;
 }
 
-.header ul li a {
-	vertical-align: middle;
-	text-align: center;
+.header li {
+	display: inline-block;
 }
 
 /** /header */
@@ -37,12 +27,53 @@
 .footer {
 	width: 100%;
 	height: 100px;
-	background: green;
+	display: none;
 }
 
 .content {
 	width: 100%;
 	min-height: 300px;
-	background: red;
 	display: inline-block;
+}
+
+/** all */
+.btn {
+	display: inline-block;
+	cursor: pointer;
+	border: 2px solid #707070;
+	height: 30px;
+	width: 200px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 10px;
+	background: #b7b7b7;
+}
+
+.btn:hover {
+	background: #d6d6d6;
+}
+
+input,
+select,
+option {
+	border: 1px solid #707070;
+	background: #b7b7b7;
+	border-radius: 10px;
+	padding: 1px 3px 1px 10px;
+	font-size: 14px;
+}
+input:hover,
+select:hover,
+option:hover  {
+	background: #d6d6d6;
+}
+
+.form_area {
+	border: 1px solid #707070;
+	border-radius: 5px;
+	background: #b7b7b7;
+}
+
+li {
+	list-style: none;
 }
