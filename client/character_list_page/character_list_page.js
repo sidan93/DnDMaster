@@ -33,6 +33,12 @@ Template.character_list_page.events({
 					air: parseInt(form.exp_air.value || 0),
 					shine: parseInt(form.exp_shine.value || 0),
 					dark: parseInt(form.exp_dark.value || 0)
+				},
+
+				other: {
+					attr1: parseInt(form.exp_attr1.value || 0),
+					attr2: parseInt(form.exp_attr2.value || 0),
+					attr3: parseInt(form.exp_attr3.value || 0)
 				}
 			},
 
