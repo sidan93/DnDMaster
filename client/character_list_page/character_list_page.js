@@ -42,7 +42,26 @@ Template.character_list_page.events({
 				}
 			},
 
-			lvl: {
+			lvls: {
+				hp: parseInt(form.lvl_hp.value || 0),
+				hit: parseInt(form.lvl_hit.value || 0),
+				dmg: parseInt(form.lvl_dmg.value || 0),
+
+				fire: parseInt(form.lvl_fire.value || 0),
+				water: parseInt(form.lvl_water.value || 0),
+				earth: parseInt(form.lvl_earth.value || 0),
+				air: parseInt(form.lvl_air.value || 0),
+				shine: parseInt(form.lvl_shine.value || 0),
+				dark: parseInt(form.lvl_dark.value || 0)
+			},
+
+			main: {
+				fire: form.magic_fire.checked,
+				water: form.magic_water.checked,
+				earth: form.magic_earth.checked,
+				air: form.magic_air.checked,
+				shine: form.magic_shine.checked,
+				dark: form.magic_dark.checked
 			}
 		};
 
@@ -100,5 +119,8 @@ Template.character_list_page.helpers({
     		selected: mainAttr == 'agi' ? 'selected' : ''
     	}
     	];
+    },
+    characterGetCheckedAttr: function(attr) {
+    	return attr ? 'checked' : '';
     }
 });

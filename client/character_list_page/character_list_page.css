@@ -46,15 +46,26 @@
 	width: 25px;
 }
 
-.character_edit .exp div span {
-	display: inline-block;;
+.character_edit .exp div span,
+.character_edit .lvls div span {
+	display: inline-block;
 	width: 150px;
 	text-align: right;
 	margin-right: 5px;
 }
 .character_edit .exp div input {
-	display: inline-block;;
+	display: inline-block;
 	width: 100px;
+}
+
+
+.character_edit .lvls div input {
+	display: inline-block;
+	width: 80px;
+}
+.character_edit .lvls div input.checkbox {
+    vertical-align: bottom;
+	width: 20px;
 }
 
 .character_edit .buttons {

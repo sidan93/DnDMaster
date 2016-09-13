@@ -62,24 +62,36 @@
               <div class='modifier_title' name='damage'>
                 <div class='click_value add btn'>Ближним</div>
               </div>
+              {{#if main.fire}}
               <div class='modifier_title' name='damage_fire'>
                 <div class='click_value add btn'>Огнем</div>
               </div>
+              {{/if}}
+              {{#if main.water}}
               <div class='modifier_title' name='damage_water'>
                 <div class='click_value add btn'>Водой</div>
               </div>
+              {{/if}}
+              {{#if main.earth}}
               <div class='modifier_title' name='damage_earth'>
                 <div class='click_value add btn'>Землей</div>
               </div>
+              {{/if}}
+              {{#if main.air}}
               <div class='modifier_title' name='damage_air'>
                 <div class='click_value add btn'>Воздухом</div>
               </div>
+              {{/if}}
+              {{#if main.shine}}
               <div class='modifier_title' name='damage_shine'>
                 <div class='click_value add btn'>Светом</div>
               </div>
+              {{/if}}
+              {{#if main.dark}}
               <div class='modifier_title' name='damage_dark'>
                 <div class='click_value add btn'>Тьмой</div>
               </div>
+              {{/if}}
             </div>
             <div class='exp'>
               Опыт: <input class='value' type='text' name='exp_value'>
@@ -93,36 +105,48 @@
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{#if main.fire}}
               <div class='modifier_title' name='exp_fire'>
                 <div class='title'>Магии огня: <b>{{exp.magic.fire}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
+              {{#if main.water}}
               <div class='modifier_title' name='exp_water'>
                 <div class='title'>Магии воды: <b>{{exp.magic.water}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
+              {{#if main.earth}}
               <div class='modifier_title' name='exp_earth'>
                 <div class='title'>Магии земли: <b>{{exp.magic.earth}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
+              {{#if main.air}}
               <div class='modifier_title' name='exp_air'>
                 <div class='title'>Магии воздуха: <b>{{exp.magic.air}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
+              {{#if main.shine}}
               <div class='modifier_title' name='exp_shine'>
                 <div class='title'>Магии света: <b>{{exp.magic.shine}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
+              {{#if main.dark}}
               <div class='modifier_title' name='exp_dark'>
                 <div class='title'>Магии тьмы: <b>{{exp.magic.dark}}</b></div>
                 <div class='click_value add btn'>+</div>
                 <div class='click_value rem btn'>-</div>
               </div>
+              {{/if}}
               <div class='modifier_title' name='exp_attr1'>
                 <div class='title'>Доп 1: <b>{{exp.other.attr1}}</b></div>
                 <div class='click_value add btn'>+</div>

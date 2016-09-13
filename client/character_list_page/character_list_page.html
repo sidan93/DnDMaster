@@ -48,10 +48,37 @@
         <div class='exp_attr1'><span>Опыт доп 1:</span><input type='text' name='exp_attr1' value='{{selectedCharacter.exp.other.attr1}}'></div>
         <div class='exp_attr2'><span>Опыт доп 2:</span><input type='text' name='exp_attr2' value='{{selectedCharacter.exp.other.attr2}}'></div>
         <div class='exp_attr3'><span>Опыт доп 3:</span><input type='text' name='exp_attr3' value='{{selectedCharacter.exp.other.attr3}}'></div>
-
       </div>
       <div class='lvls'>
         <b>Уровни:</b>
+        <div><span>Здоровья:</span><input type='text' name='lvl_hp' value='{{selectedCharacter.lvls.hp}}'></div>
+        <div><span>Попадания:</span><input type='text' name='lvl_hit' value='{{selectedCharacter.lvls.hit}}'></div>
+        <div><span>Урона:</span><input type='text' name='lvl_dmg' value='{{selectedCharacter.lvls.dmg}}'></div>
+
+        <div>
+          <span>Огня:</span><input type='text' name='lvl_fire' value='{{selectedCharacter.lvls.fire}}'>
+          <input class='checkbox' type='checkbox' name='magic_fire' {{characterGetCheckedAttr(selectedCharacter.main.fire)}}>
+        </div>
+        <div>
+          <span>Воды:</span><input type='text' name='lvl_water' value='{{selectedCharacter.lvls.water}}'>
+          <input class='checkbox' type='checkbox' name='magic_water' {{characterGetCheckedAttr(selectedCharacter.main.water)}}>
+        </div>
+        <div>
+          <span>Земли:</span><input type='text' name='lvl_earth' value='{{selectedCharacter.lvls.earth}}'>
+          <input class='checkbox' type='checkbox' name='magic_earth' {{characterGetCheckedAttr(selectedCharacter.main.earth)}}>
+        </div>
+        <div>
+          <span>Воздуха:</span><input type='text' name='lvl_air' value='{{selectedCharacter.lvls.air}}'>
+          <input class='checkbox' type='checkbox' name='magic_air' {{characterGetCheckedAttr(selectedCharacter.main.air)}}>
+        </div>
+        <div>
+          <span>Света:</span><input type='text' name='lvl_shine' value='{{selectedCharacter.lvls.shine}}'>
+          <input class='checkbox' type='checkbox' name='magic_shine' {{characterGetCheckedAttr(selectedCharacter.main.shine)}}>
+        </div>
+        <div>
+          <span>Тьмы:</span><input type='text' name='lvl_dark' value='{{selectedCharacter.lvls.dark}}'>
+          <input class='checkbox' type='checkbox' name='magic_dark' {{characterGetCheckedAttr(selectedCharacter.main.dark)}}>
+        </div>
       </div>
       <div class='buttons'>
         <div class='character_upsert btn'>Сохранить</div>

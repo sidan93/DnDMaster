@@ -77,3 +77,15 @@ option:hover  {
 li {
 	list-style: none;
 }
+
+input.checkbox {
+	display: inline-block;
+	border: 1px solid #707070;
+	background: #b7b7b7;
+	width: 18px;
+	height: 18px;
+	border-radius: 10px;
+} 
+input.checkbox:hover {
+	background: #d6d6d6;	
+}
