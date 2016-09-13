@@ -6,13 +6,12 @@
 }
 
 .fight_page .character_info {
-	width: 200px;
 	display: inline-block;
 	vertical-align: top;
 }
 
 .fight_page .character_info .info {
-	width: 130px;
+	width: 50px;
 }
 
 .fight_page .character_info .rem,
@@ -34,7 +33,7 @@
 }
 
 .fight_page .character_modifier .info {
-	width: 180px;
+	width: 130px;
 }
 
 .fight_page .character_modifier .modifier_title div,
@@ -48,6 +47,7 @@
 
 .fight_page .character_modifier .value {
 	width: 30px;
+	margin-bottom: 3px;
 }
 
 .fight_page .character_modifier .rem,
@@ -59,19 +59,40 @@
 	line-height: 20px;
 }
 
-.fight_page .hp {
+.fight_page .character_modifier .exp .rem,
+.fight_page .character_modifier .exp .add {
+	margin: 1px 2px;
+	width: 25px;
+	height: 18px;
+	line-height: 18px;
+}
+
+.fight_page .character_modifier .set_damage .add {
+	width: 85px;	
+}
+
+.fight_page .character_modifier .hp {
 	margin-bottom: 10px;
+}
+.fight_page .character_modifier .hp .info {
+	width: 180px;
 }
 
 .fight_page .set_damage {
 	display: inline-block;
 	float:left;
+	margin: 0 5px;
 }
 
 .fight_page .exp {
 	display: inline-block;
 	float:left;
 	margin-left: 5px;
+}
+
+.fight_page .exp .value {
+	width: 50px;
+	margin-bottom: 3px;
 }
 
 .clear {
