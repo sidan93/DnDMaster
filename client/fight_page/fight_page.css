@@ -20,7 +20,7 @@
 	height: 20px;
 	line-height: 20px;
 	padding: 0 1px;
-	margin: 1px;
+	margin: 1px -1px;
 }
 
 .fight_page .max_hp {
@@ -61,8 +61,8 @@
 
 .fight_page .character_modifier .exp .rem,
 .fight_page .character_modifier .exp .add {
-	margin: 1px 2px;
-	width: 25px;
+	margin: 1px -1px;
+	width: 20px;
 	height: 18px;
 	line-height: 18px;
 }

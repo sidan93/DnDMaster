@@ -82,7 +82,14 @@ Template.fight_page.events({
 			var value = parseInt(form.exp_value.value || 0) || 1;
 			var school = modifier.replace('exp_', '');
 			character.exp.magic[school] = Math.max(character.exp.magic[school] + value * modifierDamage, 0);
-
+		}
+		if (['exp_attr1', 'exp_attr2', 'exp_attr3'].indexOf(modifier) != -1) {
+			var value = parseInt(form.exp_value.value || 0) || 1;
+			var attr = modifier.replace('exp_', '');
+			character.exp.other[attr] = Math.max(character.exp.other[attr] + value * modifierDamage, 0);
+		}
+		if (['str', 'agi', 'sta', 'int', 'wis', 'cha', 'mas'].indexOf(modifier) != -1) {
+			character.props[modifier] = Math.max(character.props[modifier] + modifierDamage, 0);
 		}
 		$('.fight_page form').trigger('reset'); 
 		Meteor.call('UpdateCharacter', form.name, character);
