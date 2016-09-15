@@ -1,0 +1,22 @@
+<template name="glossary_page">
+  <div class='monster_list form_area'>
+    <div class='title'>Список мобов</div>
+    <ul>
+      {{#each monster_list}}
+        <li class='monster {{selected_class}}'>{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class='monster_edit form_area'>
+  	<div class='name'>Монстр {{selected_monster.name}}</div>
+  	<form name='monster_edit'>
+      <div class='buttons'>
+        <div class='monstr_upsert btn'>Сохранить</div>
+        {{#if selected_monster}}
+          <div class='monstr_delete btn'>Удалить</div>
+          <div class='monstr_clear btn'>Очистить</div>
+        {{/if}}
+      </div>
+  	</form>
+  </div>
+</template> 

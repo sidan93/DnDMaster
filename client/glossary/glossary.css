@@ -1,0 +1,13 @@
+.monster_list {
+	display: inline-block;
+	width: 200px;
+	float:left;
+	margin: 5px;
+	padding: 5px;
+}
+
+.monster_edit {
+	display: inline-block;
+	float:left;
+	padding: 5px;	
+}

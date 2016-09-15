@@ -15,6 +15,9 @@ Template.menu.events({
 	},
 	'click .fight_page': function(event) {
 		Session.set('page_id', 3);
+	},
+	'click .glossary_page': function(event) {
+		Session.set('page_id', 4)
 	}
 })
 
