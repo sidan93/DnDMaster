@@ -4,7 +4,7 @@ import { Mongo } from 'meteor/mongo';
 
 MonsterList = new Mongo.Collection('monster_list');
 
-Template.glossary_page.events({
+Template.bestiary_page.events({
 	'click .monster_upsert': function() {
 		var form = document.forms.monster_edit;
 		var monster = {
@@ -36,7 +36,7 @@ Template.glossary_page.events({
 
 });
 
-Template.glossary_page.helpers({
+Template.bestiary_page.helpers({
 	monster_list: function() {
 		return MonsterList.find({}, {
 			transform: function(monster) {
