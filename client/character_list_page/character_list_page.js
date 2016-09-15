@@ -43,6 +43,7 @@ Template.character_list_page.events({
 			},
 
 			lvls: {
+				hero: parseInt(form.lvl_hero.value || 1), 
 				hp: parseInt(form.lvl_hp.value || 0),
 				hit: parseInt(form.lvl_hit.value || 0),
 				dmg: parseInt(form.lvl_dmg.value || 0),
