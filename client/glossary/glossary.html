@@ -9,12 +9,21 @@
   </div>
   <div class='monster_edit form_area'>
   	<div class='name'>Монстр {{selected_monster.name}}</div>
-  	<form name='monster_edit'>
+   	<form name='monster_edit'>
+    
+      <div class='main'>
+        <div><span>Имя:</span><input type='text' name='name' value='{{selected_monster.name}}'></div>
+        <div><span>Класс:</span><input type='text' name='class' value='{{selected_monster.class}}'></div>
+        <div><span>Расса:</span><input type='text' name='race' value='{{selected_monster.race}}'></div>
+        <div><span>Жизни:</span><input type='text' name='hp' value='{{selected_monster.hp}}'></div>
+        <div><span>Описание:</span><textarea type='text' name='descr' value='{{selected_monster.descr}}' resize="none"></textarea></div>
+      </div>
+
       <div class='buttons'>
-        <div class='monstr_upsert btn'>Сохранить</div>
+        <div class='monster_upsert btn'>Сохранить</div>
         {{#if selected_monster}}
-          <div class='monstr_delete btn'>Удалить</div>
-          <div class='monstr_clear btn'>Очистить</div>
+          <div class='monster_delete btn'>Удалить</div>
+          <div class='monster_clear btn'>Очистить</div>
         {{/if}}
       </div>
   	</form>

@@ -35,9 +35,9 @@ Meteor.methods({
 		return CharacterList.remove({_id: id});
 	},
 
-	AddCharacter: function(character) {
-		return CharacterList.insert({
-			character: character,
+	AddMonster: function(monster) {
+		return MonsterList.insert({
+			monster: monster,
 			props: {
 				createdTime: new Date(),
 				lastUpdate: new Date()
@@ -45,19 +45,19 @@ Meteor.methods({
 		});
 	},
 
-	UpdateCharacter: function(id, character) {
-		return CharacterList.update({
+	UpdateMonster: function(id, monster) {
+		return MonsterList.update({
 			_id: id
 		},
 		{
-			character: character,
+			monster: monster,
 			props: {
 				lastUpdate: new Date()
 			}
 		})
 	},
 
-	DeleteCharacter: function(id) {
-		return CharacterList.remove({_id: id});
-	}S
+	DeleteMonster: function(id) {
+		return MonsterList.remove({_id: id});
+	}
 });
