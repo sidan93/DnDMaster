@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Session } from 'meteor/session'
+import { Session } from 'meteor/session';
 import { Mongo } from 'meteor/mongo';
 
 
@@ -40,7 +40,7 @@ Template.fight_page.events({
 			// При нанесении урона, увеличим опыт здоровья по формуле увеличичения 
 			// лвл_хп = лвл_хп + урон * ((телосложение - 10) / 2 + 1)
 			if (modifierDamage == -1) {
-				character.exp.hp += value * Math.max(((character.props.sta - 10) / 2 + 1), 1);
+				character.exp.hp += value * Math.max(get_modifier(character.props.sta), 1);
 			}
 
 			form.hp_change.value = null;
@@ -51,7 +51,7 @@ Template.fight_page.events({
 		}
 		if (modifier == 'damage') {
 			var value = parseInt(form.damage_value.value || 0) || 1;
-			var modifier_value = Math.max(((character.main_props == 'str' ? character.props.str : character.props.agi) - 10) / 2 + 1, 1)
+			var modifier_value = Math.max(get_modifier(character.main_props == 'str' ? character.props.str : character.props.agi), 1);
 			character.exp.melle += value * modifier_value;
 		}
 		if (['damage_fire', 'damage_water', 'damage_earth', 'damage_air', 'damage_shine', 'damage_dark'].indexOf(modifier) != -1) {
@@ -65,10 +65,9 @@ Template.fight_page.events({
 			};
 			var school = modifier.replace('damage_', '');
 			var value = parseInt(form.damage_value.value || 0) || 1;
-			var stats = value * ((character.props.wis - 10) / 2 + 1);
-			var stats = value * ((character.props.wis - 10) / 2 + 1);
+			var stats = value * get_modifier(character.props.int);
 			character.exp.magic[school] += stats;
-			character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - stats / 2, 0)
+			character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - Math.round(stats / 2), 0);
 		}
  		if (modifier == 'exp_hp') {
 			var value = parseInt(form.exp_value.value || 0) || 1;
@@ -89,7 +88,7 @@ Template.fight_page.events({
 			character.exp.other[attr] = Math.max(character.exp.other[attr] + value * modifierDamage, 0);
 		}
 		if (['str', 'agi', 'sta', 'int', 'wis', 'cha', 'mas'].indexOf(modifier) != -1) {
-			character.props[modifier] = Math.max(character.props[modifier] + modifierDamage, 0);
+			character.props[modifier] = Math.min(Math.max(character.props[modifier] + modifierDamage, 0), 20);
 		}
 		$('.fight_page form').trigger('reset'); 
 		Meteor.call('UpdateCharacter', form.name, character);
