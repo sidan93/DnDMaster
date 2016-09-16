@@ -37,6 +37,7 @@ Template.words_page.events({
 Template.words_page.helpers({
 	get_words: function() {
 		return WordsList.find({}, {
+			sort:  { language: 1 },
 			transform: function(word) {
 				return word.word;
 			}

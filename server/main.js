@@ -65,6 +65,7 @@ Meteor.methods({
 	AddWord: function(word) {
 		return WordsList.insert({
 			word: word,
+			language: word.language,
 			props: {
 				createdTime: new Date(),
 				lastUpdate: new Date()
@@ -78,6 +79,7 @@ Meteor.methods({
 			},
 			{
 				word: word,
+				language: word.language,
 				props: {
 					lastUpdate: new Date()
 				}
