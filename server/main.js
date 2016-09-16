@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 
 CharacterList = new Mongo.Collection('character_list');
 MonsterList = new Mongo.Collection('monster_list');
+WordsList = new Mongo.Collection('words_list');
 
 Meteor.startup(() => {
 
@@ -47,17 +48,43 @@ Meteor.methods({
 
 	UpdateMonster: function(id, monster) {
 		return MonsterList.update({
-			_id: id
-		},
-		{
-			monster: monster,
-			props: {
-				lastUpdate: new Date()
-			}
-		})
+				_id: id
+			},
+			{
+				monster: monster,
+				props: {
+					lastUpdate: new Date()
+				}
+			})
 	},
 
 	DeleteMonster: function(id) {
 		return MonsterList.remove({_id: id});
-	}
+	},
+
+	AddWord: function(word) {
+		return WordsList.insert({
+			word: word,
+			props: {
+				createdTime: new Date(),
+				lastUpdate: new Date()
+			}
+		});
+	},
+
+	UpdateWord: function(id, word) {
+		return WordsList.update({
+				_id: id
+			},
+			{
+				word: word,
+				props: {
+					lastUpdate: new Date()
+				}
+			})
+	},
+
+	DeleteWord: function(id) {
+		return WordsList.remove({_id: id});
+	},
 });

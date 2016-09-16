@@ -17,7 +17,10 @@ Template.menu.events({
 		Session.set('page_id', 3);
 	},
 	'click .bestiary_page': function(event) {
-		Session.set('page_id', 4)
+		Session.set('page_id', 4);
+	},
+	'click .words_page': function(event) {
+		Session.set('page_id', 5);
 	}
 })
 

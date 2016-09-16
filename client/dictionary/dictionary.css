@@ -1,0 +1,40 @@
+.word_list {
+	float:left;
+	width: 400px;
+	margin: 5px;
+	padding: 5px;
+}
+
+.word_list ul {
+	display: block;
+}
+.word_list ul li {
+	border: 1px solid #707070;
+	margin: 1px 0;
+}
+
+.word_list ul li.word div {
+	display: inline-block;
+	width: 130px;
+	text-align: center;
+}
+
+.add_new_word {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+}
+
+.add_new_word .line {
+	margin: 1px 0;
+}
+
+.add_new_word .title {
+	display: inline-block;
+	width: 110px;
+	text-align: right;
+}
+
+.add_new_word .buttons .btn {
+	width: 100px;
+}

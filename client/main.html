@@ -26,6 +26,7 @@
     <li class="character_list_page"><div class='btn'>Редактирование персонажей</div></li>
     <li class="fight_page"><div class='btn'>Бой</div></li>
     <li class="bestiary_page"><div class='btn'>Глоссарий</div></li>
+    <li class="words_page"><div class='btn'>Словарь</div></li>
   </ul>
 </template>
 
@@ -41,6 +42,9 @@
   {{/if}}
   {{#if show_page 4}}
     {{> bestiary_page}}
+  {{/if}}
+  {{#if show_page 5}}
+    {{> words_page}}
   {{/if}}
 </template>
 
