@@ -19,14 +19,15 @@ Template.words_page.events({
 		else
 			Meteor.call('AddWord', word);
 		Session.set('selectedWord', null);
-		$('.word_edit form').trigger('reset');
+		$('.add_new_word form').trigger('reset');
 	},
 	'click .word_delete': function() {
 		Meteor.call('DeleteWord', Session.get('selectedWord'));
+		$('.add_new_word form').trigger('reset');
 	},
 	'click .word_clear': function() {
 		Session.set('selectedWord', null);
-		$('.word_edit form').trigger('reset');
+		$('.add_new_word form').trigger('reset');
 	},
 	'click .word': function() {
 		Session.set('selectedWord', this._id);
