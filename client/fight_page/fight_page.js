@@ -12,6 +12,7 @@ Template.fight_page.helpers({
 					character.fight = {};
 				if (character.fight.hp_current == null)
 					character.fight.hp_current = character.props.hp;
+				character.fight.temp_hp = character.fight.temp_hp || 0;
 				return character;
 			}
 		});
@@ -48,6 +49,12 @@ Template.fight_page.events({
 		if (modifier == 'max_hp') {
 			var value = parseInt(form.hp_change.value || 0) || 1;
 			character.props.hp += value * modifierDamage;
+		}
+		if (modifier == 'max_temp_hp') {
+			var value = parseInt(form.temp_hp_change.value || 0) || 1;
+			if (!character.fight)
+				character.fight = {};
+			character.fight.temp_hp = Math.max((character.fight.temp_hp || 0) + value * modifierDamage, 0);
 		}
 		if (modifier == 'damage') {
 			var value = parseInt(form.damage_value.value || 0) || 1;
@@ -91,14 +98,16 @@ Template.fight_page.events({
 		Meteor.call('UpdateCharacter', form.name, character);
 	},
 
-	'mouseenter .title': function(event) {
-		var $block = $(event.target).find('.character_info_box');
-		$block.css($(event.target).position());
+	'mouseenter .title, mouseenter .hp': function(event) {
+		var $block = $(event.target).find('.character_box');
+		var new_pos = $(event.target).position();
+		new_pos.left += 30;
+		$block.css(new_pos);
 		$block.removeClass('hide');
 	},
 
-	'mouseleave .title': function() {
-		var $block = $(event.target).find('.character_info_box');
+	'mouseleave .title, mouseleave .hp': function() {
+		var $block = $(event.target).find('.character_box');
 		$block.addClass('hide');
 	}
 });

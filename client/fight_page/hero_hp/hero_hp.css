@@ -1,0 +1,32 @@
+.character_hp {
+    display: block;
+    padding: 5px;
+}
+
+.character_hp div.info,
+.character_hp div.info div,
+.character_hp div.info input {
+    display: inline-block;
+}
+
+.character_hp .hp {
+    display: inline-block;
+}
+
+.character_hp .rem,
+.character_hp .add {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 1px;
+    margin: 1px -1px;
+}
+
+
+.fight_page .max_hp {
+    display: inline-block;
+}
+
+.fight_page .hp .current {
+    font-weight: bold;
+}
