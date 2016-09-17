@@ -69,13 +69,10 @@ Template.fight_page.events({
 			character.exp.magic[school] += stats;
 			character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - Math.round(stats / 2), 0);
 		}
- 		if (modifier == 'exp_hp') {
+ 		if (['exp_hp', 'exp_melle', 'exp_hero'].indexOf(modifier) != -1) {
 			var value = parseInt(form.exp_value.value || 0) || 1;
-			character.exp.hp = Math.max(character.exp.hp + value * modifierDamage, 0)
-		}
-		if (modifier == 'exp_melle') {
-			var value = parseInt(form.exp_value.value || 0) || 1;
-			character.exp.melle = Math.max(character.exp.melle + value * modifierDamage, 0)
+			var attr = modifier.replace('exp_', '');
+			character.exp[attr] = Math.max(character.exp[attr] + value * modifierDamage, 0)
 		}
 		if (['exp_fire', 'exp_water','exp_earth', 'exp_air', 'exp_shine', 'exp_dark'].indexOf(modifier) != -1) {
 			var value = parseInt(form.exp_value.value || 0) || 1;
