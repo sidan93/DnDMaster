@@ -91,3 +91,7 @@ input.checkbox {
 input.checkbox:hover {
 	background: #d6d6d6;	
 }
+
+.hide {
+	display: none;
+}

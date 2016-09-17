@@ -5,22 +5,11 @@
 	padding: 5px;
 }
 
-.fight_page .character_info {
-	display: inline-block;
-	vertical-align: top;
+.fight_page .character .title {
 }
 
-.fight_page .character_info .info {
-	width: 50px;
-}
-
-.fight_page .character_info .rem,
-.fight_page .character_info .add {
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	padding: 0 1px;
-	margin: 1px -1px;
+.fight_page .character .character_info_box {
+	position: absolute;
 }
 
 .fight_page .max_hp {

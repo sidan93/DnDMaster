@@ -3,43 +3,11 @@
     {{#each character_list}}
       <div class='character form_area'>
         <form name='{{_id}}' class='fight_form'>
-          <div class='character_info'>
-            <div class='title'>Персонаж: <br/><b>{{name}}</b></div>
-            <div class='modifier_title' name='str'>
-              <div class='info'>С: {{props.str}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>  
-            <div class='modifier_title' name='agi'>
-              <div class='info'>Л: {{props.agi}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
-            <div class='modifier_title' name='sta'>
-              <div class='info'>Т: {{props.sta}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
-            <div class='modifier_title' name='int'>
-              <div class='info'>И: {{props.int}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
-            <div class='modifier_title' name='wis'>
-              <div class='info'>М: {{props.wis}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
-            <div class='modifier_title' name='cha'>
-              <div class='info'>Х: {{props.cha}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
-            <div class='modifier_title' name='mas'>
-              <div class='info'>М: {{props.mas}}</div>
-              <div class='click_value add btn'>+1</div>
-              <div class='click_value rem btn'>-1</div>
-            </div>
+          <div class='title'>
+              Персонаж: <b>{{name}}</b>
+              <div class="character_info_box hide">
+                  {{> hero_stats}}
+              </div>
           </div>
           <div class='character_modifier'>
             <div class='hp'>

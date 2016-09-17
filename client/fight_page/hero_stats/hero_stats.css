@@ -1,0 +1,26 @@
+.character_info {
+    display: inline-block;
+    padding: 5px;
+}
+
+.character_info .modifier_title {
+    display: block;
+    width: 200px;
+}
+
+.character_info .modifier_title div {
+    display: inline-block;
+}
+
+.character_info .modifier_title div.info {
+    width: 140px;
+}
+
+.character_info .rem,
+.character_info .add {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 1px;
+    margin: 1px -1px;
+}

@@ -26,7 +26,7 @@ Template.fight_page.events({
 		var modifier = $(event.target).parents('.modifier_title')[0].getAttribute('name');
 		var form = $(event.target).parents('form')[0];
 		// Модификатор который отвечает, за то складываем мы статы или вычитаем
-		modifierDamage = 1;
+		var modifierDamage = 1;
 		if ($(event.target).hasClass('rem'))
 			modifierDamage = -1;
 		var character = CharacterList.findOne({_id: form.name}).character;
@@ -89,6 +89,17 @@ Template.fight_page.events({
 		}
 		$('.fight_page form').trigger('reset'); 
 		Meteor.call('UpdateCharacter', form.name, character);
+	},
+
+	'mouseenter .title': function(event) {
+		var $block = $(event.target).find('.character_info_box');
+		$block.css($(event.target).position());
+		$block.removeClass('hide');
+	},
+
+	'mouseleave .title': function() {
+		var $block = $(event.target).find('.character_info_box');
+		$block.addClass('hide');
 	}
 });
 
