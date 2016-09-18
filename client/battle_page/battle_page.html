@@ -1,9 +1,12 @@
 <template name='battle_page'>
-	{{#if HavePermission}}
-	    <div class='battle_field'>
+	{{> battle_ui_heroes_page}}
+    <div class='battle_field_view'>
+		{{#if HavePermission}}
 	    	Великая битва
-	    </div>    
-	{{else}}
-		<div class='no_permission'>У вас не достаточно прав для просмотра текущей страницы</div>
-    {{/if}}
+	    	{{> battle_field_page}}
+		{{else}}
+			<div class='no_permission'>У вас не достаточно прав для просмотра текущей страницы</div>
+	    {{/if}}
+    </div>    
+	{{> battle_ui_mobs_page}}
 </template>

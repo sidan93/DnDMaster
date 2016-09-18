@@ -1,0 +1,19 @@
+<template name="battle_field_page">
+	{{#with getBattle}}
+		<div class="battle_field" oncontextmenu="return false;">
+			{{#each getRow}}
+				<div class="row" row={{row}}>
+					{{#each getCol row}}
+						<div class="cell" col="{{col}}" row="{{row}}"></div>
+					{{/each}}
+				</div>
+			{{/each}}
+		</div>
+		<div>
+			Info:
+			{{#with getInfo}}
+				Расстояние: {{length}} футов
+			{{/with}}
+		</div>
+	{{/with}}
+</template>

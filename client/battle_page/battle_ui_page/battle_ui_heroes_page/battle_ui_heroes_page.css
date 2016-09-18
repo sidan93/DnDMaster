@@ -1,0 +1,19 @@
+.hero_list {
+	float:left;
+	width: 200px;
+	height: 200px;
+}
+
+.hero_list li .initiative,
+.hero_list li .name,
+.hero_list li .add,
+.hero_list li .rem {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.hero_list li .name {
+	width: 100px;
+}

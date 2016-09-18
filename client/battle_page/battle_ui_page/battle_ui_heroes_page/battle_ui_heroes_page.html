@@ -1,0 +1,14 @@
+<template name="battle_ui_heroes_page">
+	<div class="hero_list form_area">
+		<ul>
+			{{#each heroList}}
+				<li _id="{{_id}}">
+					<div class="name">{{character.name}}</div>
+					<input class="initiative" type="text" name="initiative" value="{{character.initiative}}">
+					<div class="add btn">+</div>
+					<div class="rem btn">-</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</template>
