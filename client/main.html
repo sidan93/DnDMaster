@@ -15,7 +15,15 @@
       {{> content}}
     </div>
     <div class="footer">
-      {{> menu}}
+      <div class="form_area login_btn">
+        {{#if CurrentUser}}
+          Пользователь:
+        {{else}}
+          Войти:
+        {{/if}}
+        {{> loginButtons}}
+        
+      </div>
     </div>
   </div>
 </template>
@@ -25,8 +33,9 @@
     <!--<li class="main_page"><div class='btn'>Главная</div></li>-->
     <li class="character_list_page"><div class='btn'>Редактирование персонажей</div></li>
     <li class="fight_page"><div class='btn'>Бой</div></li>
-    <li class="bestiary_page"><div class='btn'>Глоссарий</div></li>
+    <li class="bestiary_page"><div class='btn'>Бестиарий</div></li>
     <li class="words_page"><div class='btn'>Словарь</div></li>
+    <li class="battle_page"><div class='btn'>Битва</div></li>
   </ul>
 </template>
 
@@ -45,6 +54,9 @@
   {{/if}}
   {{#if show_page 5}}
     {{> words_page}}
+  {{/if}}
+  {{#if show_page 6}}
+    {{> battle_page}}
   {{/if}}
 </template>
 

@@ -1,0 +1,9 @@
+<template name='battle_page'>
+	{{#if HavePermission}}
+	    <div class='battle_field'>
+	    	Великая битва
+	    </div>    
+	{{else}}
+		<div class='no_permission'>У вас не достаточно прав для просмотра текущей страницы</div>
+    {{/if}}
+</template>

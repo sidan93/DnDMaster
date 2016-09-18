@@ -6,10 +6,14 @@ MonsterList = new Mongo.Collection('monster_list');
 WordsList = new Mongo.Collection('words_list');
 
 Meteor.startup(() => {
-
 });
 
 Meteor.methods({
+	IsAdminUser: function() {
+		var user = Meteor.users.findOne({_id: Meteor.userId()});
+		return !!user;
+	},
+
 	AddCharacter: function(character) {
 		return CharacterList.insert({
 			character: character,

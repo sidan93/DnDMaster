@@ -6,6 +6,10 @@ import './main.html';
 
 CharacterList = new Mongo.Collection('character_list');
 
+Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_ONLY'
+});
+
 Template.menu.events({
 	'click .main_page': function(event) {
 		Session.set('page_id', 1);
@@ -21,8 +25,17 @@ Template.menu.events({
 	},
 	'click .words_page': function(event) {
 		Session.set('page_id', 5);
+	},
+	'click .battle_page': function(event) {
+		Session.set('page_id', 6);
 	}
 })
+
+Template.main.helpers({
+	CurrentUser: function() {
+		return !!Meteor.userId();
+	}
+});
 
 Template.content.helpers({
 	show_page: function(id) {
