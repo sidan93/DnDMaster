@@ -12,23 +12,27 @@ var sizeBlock = 23;
 var countInLine = size / sizeBlock;
 
 Template.battle_field_page.helpers({
-	getRow: function() {
+	getRow: function(heroes) {
 		var result = [];
 		for (var i = 0; i < countInLine; i++)
 			result.push({
-				row: i
+				row: i,
+				heroes: heroes
 			});
 		return result;
 	},
-	getCol: function(row) {
+	getCol: function(row, heroes) {
 		var sizeBlock = 10;
 		var countCol = $('.battle_field').width() / sizeBlock;
 		var result = [];
-		for (var i = 0; i < countInLine; i++)
+		for (var col = 0; col < countInLine; col++) {
+			var hero = Object.values(heroes).find(function(i) { return i.pos ? i.pos.row == row && i.pos.col == col : false; })
 			result.push({
-				col: i,
-				row: row
+				col: col,
+				row: row,
+				heroId: hero ? hero.id : null
 			});
+		}
 		return result;
 	},
 	getInfo: function() {
@@ -52,24 +56,28 @@ Template.battle_field_page.events({
 		var field = cellToObj(target);
 		// Опредеим действие на нажатие левой кнопки мыши
 		if (event.button == 0) {
+			// Если у нас включено постановка персонажа, то его и установим
+			if (Session.get('SetNextCharacter'))
+				Meteor.call('Move')
+
 			if (cellStart.get())
-				cellStart.get().target.css('background', 'transparent');
+				cellStart.get().target.css('background', '');
 			cellStart.set(field);
 			target.css('background', 'red');
 			return;
 		}
 		if (event.button == 2) {
 			if (cellEnd.get()) 
-				cellEnd.get().target.css('background', 'transparent');
+				cellEnd.get().target.css('background', '');
 			cellEnd.set(field);
 			target.css('background', 'blue');
 			return;
 		}
 		if (event.button == 1) {
 			if (cellStart.get())
-				cellStart.get().target.css('background', 'transparent');
+				cellStart.get().target.css('background', '');
 			if (cellEnd.get()) 
-				cellEnd.get().target.css('background', 'transparent');
+				cellEnd.get().target.css('background', '');
 			cellStart.set(null);
 			cellEnd.set(null);
 		}

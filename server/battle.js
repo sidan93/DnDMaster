@@ -9,25 +9,34 @@ Meteor.startup(() => {
 	if (!battle)
 		battle = {};
 	if (!battle.heroes)
-		battle.heroes = [];
+		battle.heroes = {};
 	BattleList.upsert({_id: battleId}, battle);
 });
 
 Meteor.methods({
 	addHeroInBattle: function(heroId) {
 		var battle = getBattle();
-		if (battle.heroes.indexOf(heroId) == -1)
+		if (!battle.heroes[heroId])
 		{
-			battle.heroes.push(heroId);
+			battle.heroes[heroId] = {
+				id: heroId,
+				pos: {
+					row: 0,
+					col: 0
+				}
+			};
 			BattleList.update({_id: battleId}, battle);
 		}
 	},
 	removeHeroInBattle: function(heroId) {
 		var battle = getBattle();
-		if (battle.heroes.indexOf(heroId) != -1) {
-			battle.heroes.splice(battle.heroes.indexOf(heroId), 1);
+		if (battle.heroes[heroId]) {
+			delete battle.heroes[heroId];
 			BattleList.update({_id: battleId}, battle);
 		}
+	},
+	moveCharacterInBattle: function(id, newPosW, newPoxC) {
+		var battle = getBattle();
 	}
 });
 

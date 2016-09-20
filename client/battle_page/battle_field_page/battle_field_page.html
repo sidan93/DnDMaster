@@ -1,10 +1,10 @@
 <template name="battle_field_page">
 	{{#with getBattle}}
 		<div class="battle_field" oncontextmenu="return false;">
-			{{#each getRow}}
-				<div class="row" row={{row}}>
-					{{#each getCol row}}
-						<div class="cell" col="{{col}}" row="{{row}}"></div>
+			{{#each getRow heroes}}
+				<div class="row" row="{{row}}">
+					{{#each getCol row heroes}}
+						<div class="cell" col="{{col}}" row="{{row}}" heroId="{{heroId}}"></div>
 					{{/each}}
 				</div>
 			{{/each}}

@@ -11,9 +11,13 @@
 .battle_field .cell {
 	display: inline-block;
 	border: 1px solid black;
+	background: #b7b7b7;
 	width: 20px;
 	height: 20px;
 	margin: 0;
 	padding: 0;
 	float: left;
+}
+.battle_field .cell:hover {
+	background: #d6d6d6;
 }

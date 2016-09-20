@@ -23,6 +23,7 @@ Template.battle_ui_heroes_page.events({
 		Meteor.call('addHeroInBattle', heroId);
 		var initiative = Math.min(target.parents('li').children('input.initiative')[0].value, 0);
 		Meteor.call('UpdateCharacterValue', heroId, 'character.initiative', parseInt(initiative) || 0);
+		Session.set('SetNextCharacter', heroId)
 	},
 	'click .hero_list .rem': function() {
 		var target = $(event.target);
