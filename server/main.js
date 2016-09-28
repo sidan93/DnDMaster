@@ -40,29 +40,73 @@ Meteor.methods({
 		return CharacterList.remove({_id: id});
 	},
 
+	/**
+	 * @param {Object} monster
+	 * @param {String} monster.race Расса 
+	 * @param {String} monster.name Имя 
+	 * @param {String} monster.type Тип
+	 * @param {String} monster.hp Жизни существа
+	 * @param {String} monster.armor Броня существа
+	 * @param {String} monster.descr Описание существа
+	 */
 	AddMonster: function(monster) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+		
+		check(monster.race, String);
+		check(monster.name, String);
+
 		return MonsterList.insert({
-			monster: monster,
-			props: {
-				createdTime: new Date(),
-				lastUpdate: new Date()
+			race: monster.race,
+			name: monster.name,
+			type: monster.type,
+			hp: monster.hp,
+			armor: monster.armor,
+			descr: monster.descr,
+			owner: Meteor.userId(),	
+			lastUpdateUsr: Meteor.userId(),	
+			createdTime: new Date(),
+			lastUpdate: new Date()
+		});
+	},
+
+	/**
+	 * @param {Object} monster
+	 * @param {String} monster.race Расса 
+	 * @param {String} monster.name Имя 
+	 * @param {String} monster.type Тип
+	 * @param {String} monster.hp Жизни существа
+	 * @param {String} monster.armor Броня существа
+	 * @param {String} monster.descr Описание существа
+	 */
+	UpdateMonster: function(id, monster) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+
+		check(monster.race, String);
+		check(monster.name, String);
+
+		return MonsterList.update({
+			_id: id
+		},
+		{
+			$set: {
+				race: monster.race,
+				name: monster.name,
+				type: monster.type,
+				hp: monster.hp,
+				armor: monster.armor,
+				descr: monster.descr,
+				lastUpdate: new Date(),
+				lastUpdateUsr: Meteor.userId()
 			}
 		});
 	},
 
-	UpdateMonster: function(id, monster) {
-		return MonsterList.update({
-				_id: id
-			},
-			{
-				monster: monster,
-				props: {
-					lastUpdate: new Date()
-				}
-			})
-	},
-
 	DeleteMonster: function(id) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+
 		return MonsterList.remove({_id: id});
 	},
 
@@ -92,5 +136,5 @@ Meteor.methods({
 
 	DeleteWord: function(id) {
 		return WordsList.remove({_id: id});
-	},
+	}
 });

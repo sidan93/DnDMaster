@@ -1,19 +1,19 @@
 /** monster_list */
-.monster_list {
+.monster_list,
+.race_list {
 	display: inline-block;
 	width: 200px;
 	float:left;
 	margin: 5px;
 	padding: 5px;
 }
-.monster_list .title {
-	font-size: 18px;
-}
-.monster_list .monster {
+.monster_list .monster,
+.race_list .race {
 	padding-left: 15px;
 	cursor: pointer;
 }
-.monster_list .monster.selected {
+.monster_list .monster.selected,
+.race_list .race.selected {
 	font-weight: bold;
 }
 
