@@ -6,20 +6,11 @@ WordsList = new Mongo.Collection('words_list');
 
 Template.words_page.events({
 	'click .word_upsert': function(event) {
-		var form = document.forms.word_edit;
-		var word = {
-			original: form.original.value,
-			translate: form.translate.value,
-			language: form.language.value
-		}
-
-		var id = Session.get('selectedWord') || null;
-		if (id)
-			Meteor.call('UpdateWord', id, word);
-		else
-			Meteor.call('AddWord', word);
-		Session.set('selectedWord', null);
-		$('.add_new_word form').trigger('reset');
+		word_upsert(document.forms.word_edit);
+	},
+	'keypress .add_new_word': function(event) {
+		if (event.keyCode == 13)
+			word_upsert(document.forms.word_edit);
 	},
 	'click .word_delete': function() {
 		Meteor.call('DeleteWord', Session.get('selectedWord'));
@@ -34,6 +25,23 @@ Template.words_page.events({
 	}
 });
 
+function word_upsert(form) {
+	var word = {
+		original: form.original.value,
+		translate: form.translate.value,
+		language: form.language.value
+	}
+
+	var id = Session.get('selectedWord') || null;
+	if (id)
+		Meteor.call('UpdateWord', id, word);
+	else
+		Meteor.call('AddWord', word);
+	Session.set('selectedWord', null);
+	$('.add_new_word form').trigger('reset');
+}
+
+
 Template.words_page.helpers({
 	get_words: function() {
 		return WordsList.find({}, {
@@ -43,6 +51,19 @@ Template.words_page.helpers({
 			}
 		});
 	},
+	get_language_list: function(language) {
+		return WordsList.find(
+			{
+				language: language
+			}, 
+			{
+				sort:  { language: 1 },
+				transform: function(word) {
+					return word.word;
+				}
+			}
+		);
+	},
 	selected_word: function() {
 		return WordsList.findOne(
 			{ _id: Session.get('selectedWord') },
@@ -51,14 +72,6 @@ Template.words_page.helpers({
 					return word.word;
 				}
 			});
-	},
-	selected_class: function() {
-		if (this._id == Session.get('selectedWord'))
-			return 'selected';
-	},
-
-	selectedLanguage: function(word, id) {
-		return word.language == id ? 'selected' : '';
 	},
 
 	langList: function(mainAttr) {

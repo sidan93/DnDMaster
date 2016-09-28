@@ -1,6 +1,6 @@
 .word_list {
-	float:left;
-	width: 400px;
+	display: inline-block;
+	vertical-align: top;
 	margin: 5px;
 	padding: 5px;
 }
@@ -20,9 +20,17 @@
 }
 
 .add_new_word {
-	float: left;
+	display: block;
+	width: 500px;
+	height: 70px;
 	margin: 5px;
 	padding: 5px;
+}
+
+.add_new_word .word_lines {
+	display: inline-block;
+	width: 300px;
+	vertical-align: top;
 }
 
 .add_new_word .line {
@@ -35,6 +43,13 @@
 	text-align: right;
 }
 
+.add_new_word .buttons {
+	display: inline-block;
+	width: 110px;
+}
+
 .add_new_word .buttons .btn {
 	width: 100px;
+	height: 20px;
+	line-height: 20px;
 }

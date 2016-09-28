@@ -1,25 +1,16 @@
 <template name="words_page">
-  <div class="word_list form_area">
-    <ul>
-      {{#each get_words}}
-        <li class="word">
-          <div class="original">{{original}}</div>
-          <div class="translate">{{translate}}</div>
-          <div class="language">{{language}}</div>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
   <div class="add_new_word form_area">
     <form name="word_edit">
-      <div class="line"><span class="title">Оригинальное: </span><input type="text" name="original" value="{{selected_word.original}}"></div>
-      <div class="line"><span class="title">Перевод: </span><input type="text" name="translate" value="{{selected_word.translate}}"></div>
-      <div class="line"><span class="title">Язык: </span>
-        <select name='language'>
-          {{#each langList selected_word.language}}
-            <option name='{{id}}' {{selected}}>{{name}}</option>
-          {{/each}}
-        </select>
+      <div class="word_lines">
+        <div class="line"><span class="title">Оригинальное: </span><input type="text" name="original" value="{{selected_word.original}}"></div>
+        <div class="line"><span class="title">Перевод: </span><input type="text" name="translate" value="{{selected_word.translate}}"></div>
+        <div class="line"><span class="title">Язык: </span>
+          <select name='language'>
+            {{#each langList selected_word.language}}
+              <option name='{{id}}' {{selected}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
 
       <div class='buttons'>
@@ -30,5 +21,25 @@
         {{/if}}
       </div>
     </form>
+  </div>
+  <div class="word_list form_area">
+    <ul>
+      {{#each get_language_list "Талисен"}}  
+        <li class="word">
+          <div class="original">{{original}}</div>
+          <div class="translate">{{translate}}</div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="word_list form_area">
+    <ul>
+      {{#each get_language_list "Мунсен"}}  
+        <li class="word">
+          <div class="original">{{original}}</div>
+          <div class="translate">{{translate}}</div>
+        </li>
+      {{/each}}
+    </ul>
   </div>
 </template>
