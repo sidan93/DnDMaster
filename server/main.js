@@ -47,6 +47,7 @@ Meteor.methods({
 	 * @param {String} monster.type Тип
 	 * @param {String} monster.hp Жизни существа
 	 * @param {String} monster.armor Броня существа
+	 * @param {String} monster.size Размер существа
 	 * @param {String} monster.descr Описание существа
 	 */
 	AddMonster: function(monster) {
@@ -56,18 +57,12 @@ Meteor.methods({
 		check(monster.race, String);
 		check(monster.name, String);
 
-		return MonsterList.insert({
-			race: monster.race,
-			name: monster.name,
-			type: monster.type,
-			hp: monster.hp,
-			armor: monster.armor,
-			descr: monster.descr,
+		return MonsterList.insert(Object.assign(monster, {
 			owner: Meteor.userId(),	
 			lastUpdateUsr: Meteor.userId(),	
 			createdTime: new Date(),
 			lastUpdate: new Date()
-		});
+		}));
 	},
 
 	/**
@@ -77,6 +72,7 @@ Meteor.methods({
 	 * @param {String} monster.type Тип
 	 * @param {String} monster.hp Жизни существа
 	 * @param {String} monster.armor Броня существа
+	 * @param {String} monster.size Размер существа
 	 * @param {String} monster.descr Описание существа
 	 */
 	UpdateMonster: function(id, monster) {
@@ -90,16 +86,10 @@ Meteor.methods({
 			_id: id
 		},
 		{
-			$set: {
-				race: monster.race,
-				name: monster.name,
-				type: monster.type,
-				hp: monster.hp,
-				armor: monster.armor,
-				descr: monster.descr,
+			$set: Object.assign(monster, {
 				lastUpdate: new Date(),
 				lastUpdateUsr: Meteor.userId()
-			}
+			})
 		});
 	},
 

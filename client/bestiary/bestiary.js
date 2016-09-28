@@ -31,7 +31,7 @@ Template.bestiary_page.events({
 
 Template.bestiary_page.helpers({
 	get_race_list: function() {
-		return _.unique(MonsterList.find().fetch(), false, function(i) {return i.race;});
+		return _.unique(MonsterList.find({}, {sort: {name: 1}}).fetch(), false, function(i) {return i.race;});
 	},
 	selected_race: function() {
 		if (this.race == Session.get('selected_race'))
@@ -39,7 +39,7 @@ Template.bestiary_page.helpers({
 	},
 
 	get_monsters_by_race: function() {
-        return MonsterList.find({ race: Session.get('selected_race') });		
+        return MonsterList.find({ race: Session.get('selected_race') }, {sort: {name: 1}});		
 	},
 	selected_monster: function() {
 		if (this._id == Session.get('selected_monster'))
@@ -58,6 +58,7 @@ function monster_upsert(form) {
 		type: form.type.value,
 		hp: form.hp.value,
 		armor: form.armor.value,
+		size: form.size.value,
 		descr: form.descr.value
 	};
 
@@ -70,7 +71,7 @@ function monster_upsert(form) {
 		}
 		else console.log(error);
 	}
-	
+
 	if (id)
 		Meteor.call('UpdateMonster', id, monster, after_save);
 	else 
