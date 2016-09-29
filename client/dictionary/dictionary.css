@@ -5,6 +5,11 @@
 	padding: 5px;
 }
 
+.word_list .title {
+	text-align: center;
+	font-weight: bold;
+}
+
 .word_list ul {
 	display: block;
 }
