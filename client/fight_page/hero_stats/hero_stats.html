@@ -1,39 +1,13 @@
 <template name='hero_stats'>
     <div class='character_info form_area'>
-        <div class='modifier_title' name='str'>
-            <div class='info'>Сила: {{props.str}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='agi'>
-            <div class='info'>Ловкость: {{props.agi}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='sta'>
-            <div class='info'>Телосложение: {{props.sta}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='int'>
-            <div class='info'>Интелект: {{props.int}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='wis'>
-            <div class='info'>Мудрость: {{props.wis}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='cha'>
-            <div class='info'>Харизма: {{props.cha}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
-        <div class='modifier_title' name='mas'>
-            <div class='info'>Мастерство: {{props.mas}}</div>
-            <div class='click_value add btn'>+1</div>
-            <div class='click_value rem btn'>-1</div>
-        </div>
+        {{#each get_stats_list props}}
+            <div class='modifier_title' name="{{name}}">
+                <div class='info'>{{title}} {{value}}</div>
+                {{#if currentUser}}
+                    <div class='click_value add btn'>+1</div>
+                    <div class='click_value rem btn'>-1</div>
+                {{/if}}
+            </div>
+        {{/each}}
     </div>
 </template>

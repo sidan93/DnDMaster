@@ -21,44 +21,20 @@
                   <div class="temp">({{fight.temp_hp}})</div>
               {{/if}}
             </div>
-            <div class='set_damage'>
-              Урон: <input class='value' type='text' name='damage_value'>
-              <div class='modifier_title' name='damage'>
-                <div class='click_value add btn'>Ближним</div>
+            {{#if currentUser}}
+              <div class='set_damage'>
+                Урон: <input class='value' type='text' name='damage_value'>
+                {{#each get_dmg_list main}}
+                  {{#if visible}}
+                    <div class='modifier_title' name="{{name}}">
+                      <div class='click_value add btn'>{{title}}</div>
+                    </div>
+                  {{/if}}
+                {{/each}}
               </div>
-              {{#if main.fire}}
-              <div class='modifier_title' name='damage_fire'>
-                <div class='click_value add btn'>Огнем</div>
-              </div>
-              {{/if}}
-              {{#if main.water}}
-              <div class='modifier_title' name='damage_water'>
-                <div class='click_value add btn'>Водой</div>
-              </div>
-              {{/if}}
-              {{#if main.earth}}
-              <div class='modifier_title' name='damage_earth'>
-                <div class='click_value add btn'>Землей</div>
-              </div>
-              {{/if}}
-              {{#if main.air}}
-              <div class='modifier_title' name='damage_air'>
-                <div class='click_value add btn'>Воздухом</div>
-              </div>
-              {{/if}}
-              {{#if main.shine}}
-              <div class='modifier_title' name='damage_shine'>
-                <div class='click_value add btn'>Светом</div>
-              </div>
-              {{/if}}
-              {{#if main.dark}}
-              <div class='modifier_title' name='damage_dark'>
-                <div class='click_value add btn'>Тьмой</div>
-              </div>
-              {{/if}}
-            </div>
+            {{/if}}
             <div class='exp'>
-              Опыт: <input class='value' type='text' name='exp_value'>
+              Опыт: {{#if currentUser}}<input class='value' type='text' name='exp_value'>{{/if}}
               {{#each get_exp_list exp main}}
                 {{#if visible}}
                   <div class='modifier_title' name="{{name}}">

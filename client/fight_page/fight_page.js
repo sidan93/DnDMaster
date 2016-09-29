@@ -17,6 +17,46 @@ Template.fight_page.helpers({
 		});
 	},
 
+	get_dmg_list: function(main) {
+		return [
+			{
+				title: 'Ближним',
+				name: 'damage',
+				visible: true
+			},
+			{
+				title: 'Огнем',
+				name: 'damage_fire',
+				visible: main.fire
+			},
+			{
+				title: 'Водой',
+				name: 'damage_water',
+				visible: main.water
+			},
+			{
+				title: 'Землей',
+				name: 'damage_earth',
+				visible: main.earth
+			},
+			{
+				title: 'Воздухом',
+				name: 'damage_air',
+				visible: main.air
+			},
+			{
+				title: 'Светом',
+				name: 'damage_shine',
+				visible: main.shine
+			},
+			{
+				title: 'Тьмой',
+				name: 'damage_dark',
+				visible: main.dark
+			},
+		];
+	},
+
 	get_exp_list: function(exp, main) {
 		return [
 			{
@@ -57,9 +97,9 @@ Template.fight_page.helpers({
 			},
 			{
 				title: 'Магии воздуха:',
-				value: exp.magic.water,
+				value: exp.magic.air,
 				name: 'exp_air',
-				visible: main.water				
+				visible: main.air				
 			},
 			{
 				title: 'Магии света:',
