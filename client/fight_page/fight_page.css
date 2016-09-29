@@ -5,6 +5,11 @@
 	padding: 5px;
 }
 
+.fight_page .character .title .stats_button {
+	display: inline-block;
+	cursor: pointer;
+}
+
 .fight_page .character .title .character_box,
 .fight_page .character .hp .character_box {
 	position: absolute;

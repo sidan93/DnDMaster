@@ -98,7 +98,16 @@ Template.fight_page.events({
 		Meteor.call('UpdateCharacter', form.name, character);
 	},
 
-	'mouseenter .title, mouseenter .hp': function(event) {
+	'click .stats_button': function(event) {
+		var $block = $(event.target).parents('.title').find('.character_box');
+		var new_pos = $(event.target).position();
+		$block.css(new_pos);
+		if ($block.hasClass('hide'))
+			$block.removeClass('hide');
+		else
+			$block.addClass('hide');
+	},
+	'mouseenter .hp': function(event) {
 		var $block = $(event.target).find('.character_box');
 		var new_pos = $(event.target).position();
 		new_pos.left += 30;
