@@ -37,6 +37,8 @@
 .fight_page .character_modifier .modifier_title div,
 .fight_page .character_info .modifier_title div {
 	display: inline-block;
+    height: 21px;
+    line-height: 21px;
 }
 
 .fight_page .character_modifier .value {

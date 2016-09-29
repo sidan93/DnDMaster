@@ -63,8 +63,10 @@
                 {{#if visible}}
                   <div class='modifier_title' name="{{name}}">
                     <div class='title'>{{title}} <b>{{value}}</b></div>
-                    <div class='click_value add btn'>+</div>
-                    <div class='click_value rem btn'>-</div>
+                    {{#if currentUser}}
+                      <div class='click_value add btn'>+</div>
+                      <div class='click_value rem btn'>-</div>
+                    {{/if}}
                   </div>
                 {{/if}}
               {{/each}}
