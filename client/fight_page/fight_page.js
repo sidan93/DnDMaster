@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import { Mongo } from 'meteor/mongo';
 
-
 Template.fight_page.helpers({
 	character_list: function() {
 		return CharacterList.find({}, {
@@ -16,6 +15,83 @@ Template.fight_page.helpers({
 				return character;
 			}
 		});
+	},
+
+	get_exp_list: function(exp, main) {
+		return [
+			{
+				title: 'Персонаж:',
+				value: exp.hero,
+				name: 'exp_hero',
+				visible: true
+			},
+			{
+				title: 'Здоровье:',
+				value: exp.hp,
+				name: 'exp_hp',
+				visible: true				
+			},
+			{
+				title: 'Ближнего боя:',
+				value: exp.melle,
+				name: 'exp_melle',
+				visible: true				
+			},
+			{
+				title: 'Магии огня:',
+				value: exp.magic.fire,
+				name: 'exp_fire',
+				visible: main.fire				
+			},
+			{
+				title: 'Магии воды:',
+				value: exp.magic.water,
+				name: 'exp_water',
+				visible: main.water				
+			},
+			{
+				title: 'Магии земли:',
+				value: exp.magic.earth,
+				name: 'exp_earth',
+				visible: main.earth				
+			},
+			{
+				title: 'Магии воздуха:',
+				value: exp.magic.water,
+				name: 'exp_air',
+				visible: main.water				
+			},
+			{
+				title: 'Магии света:',
+				value: exp.magic.shine,
+				name: 'exp_shine',
+				visible: main.shine				
+			},
+			{
+				title: 'Магии тьмы:',
+				value: exp.magic.dark,
+				name: 'exp_dark',
+				visible: main.dark				
+			},
+			{
+				title: 'Доп 1:',
+				value: exp.other.attr1,
+				name: 'exp_attr1',
+				visible: false				
+			},
+			{
+				title: 'Доп 2:',
+				value: exp.other.attr2,
+				name: 'exp_attr2',
+				visible: false				
+			},
+			{
+				title: 'Доп 3:',
+				value: exp.other.attr3,
+				name: 'exp_attr3',
+				visible: false				
+			},
+		];
 	}
 });
 

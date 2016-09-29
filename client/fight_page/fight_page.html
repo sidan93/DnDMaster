@@ -59,78 +59,15 @@
             </div>
             <div class='exp'>
               Опыт: <input class='value' type='text' name='exp_value'>
-              <div class='modifier_title' name='exp_hero'>
-                <div class='title'>Персонаж: <b>{{exp.hero}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              <div class='modifier_title' name='exp_hp'>
-                <div class='title'>Здоровье: <b>{{exp.hp}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              <div class='modifier_title' name='exp_melle'>
-                <div class='title'>Ближнего бой: <b>{{exp.melle}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{#if main.fire}}
-              <div class='modifier_title' name='exp_fire'>
-                <div class='title'>Магии огня: <b>{{exp.magic.fire}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              {{#if main.water}}
-              <div class='modifier_title' name='exp_water'>
-                <div class='title'>Магии воды: <b>{{exp.magic.water}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              {{#if main.earth}}
-              <div class='modifier_title' name='exp_earth'>
-                <div class='title'>Магии земли: <b>{{exp.magic.earth}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              {{#if main.air}}
-              <div class='modifier_title' name='exp_air'>
-                <div class='title'>Магии воздуха: <b>{{exp.magic.air}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              {{#if main.shine}}
-              <div class='modifier_title' name='exp_shine'>
-                <div class='title'>Магии света: <b>{{exp.magic.shine}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              {{#if main.dark}}
-              <div class='modifier_title' name='exp_dark'>
-                <div class='title'>Магии тьмы: <b>{{exp.magic.dark}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              {{/if}}
-              <div class='modifier_title' name='exp_attr1'>
-                <div class='title'>Доп 1: <b>{{exp.other.attr1}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              <div class='modifier_title' name='exp_attr2'>
-                <div class='title'>Доп 2: <b>{{exp.other.attr2}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
-              <div class='modifier_title' name='exp_attr3'>
-                <div class='title'>Доп 3: <b>{{exp.other.attr3}}</b></div>
-                <div class='click_value add btn'>+</div>
-                <div class='click_value rem btn'>-</div>
-              </div>
+              {{#each get_exp_list exp main}}
+                {{#if visible}}
+                  <div class='modifier_title' name="{{name}}">
+                    <div class='title'>{{title}} <b>{{value}}</b></div>
+                    <div class='click_value add btn'>+</div>
+                    <div class='click_value rem btn'>-</div>
+                  </div>
+                {{/if}}
+              {{/each}}
             </div>
           </div>
           <div class='character_lvl'>
