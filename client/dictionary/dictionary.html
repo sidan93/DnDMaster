@@ -12,14 +12,15 @@
           </select>
         </div>
       </div>
-
-      <div class='buttons'>
-        <div class='word_upsert btn'>Сохранить</div>
-        {{#if selected_word}}
-          <div class='word_delete btn'>Удалить</div>
-          <div class='word_clear btn'>Очистить</div>
-        {{/if}}
-      </div>
+      {{#if currentUser}}
+        <div class='buttons'>
+          <div class='word_upsert btn'>Сохранить</div>
+          {{#if selected_word}}
+            <div class='word_delete btn'>Удалить</div>
+            <div class='word_clear btn'>Очистить</div>
+          {{/if}}
+        </div>
+      {{/if}}
     </form>
   </div>
   <div class="word_list form_area">
