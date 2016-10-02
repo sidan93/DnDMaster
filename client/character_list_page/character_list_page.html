@@ -81,13 +81,15 @@
           <input class='checkbox' type='checkbox' name='magic_dark' {{characterGetCheckedAttr(selectedCharacter.main.dark)}}>
         </div>
       </div>
-      <div class='buttons'>
-        <div class='character_upsert btn'>Сохранить</div>
-        {{#if selectedCharacter}}
-          <div class='character_delete btn'>Удалить</div>
-          <div class='character_clear btn'>Очистить</div>
-        {{/if}}
-      </div>
+      {{#if currentUser.isAdmin}}
+        <div class='buttons'>
+          <div class='character_upsert btn'>Сохранить</div>
+          {{#if selectedCharacter}}
+            <div class='character_delete btn'>Удалить</div>
+            <div class='character_clear btn'>Очистить</div>
+          {{/if}}
+        </div>
+      {{/if}}
     </form>
   </div>
 </template>
