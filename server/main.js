@@ -5,13 +5,39 @@ CharacterList = new Mongo.Collection('character_list');
 MonsterList = new Mongo.Collection('monster_list');
 WordsList = new Mongo.Collection('words_list');
 
+function isAdminUser(name) {
+	// Добавим права администратора для следующих пользователей
+	var isAdmin = ['sidan93', 'uromir', 'Arhael']
+	console.log('test');
+	return isAdmin.indexOf(name) != -1;	
+}
+
 Meteor.startup(() => {
 });
 
+Meteor.publish('userData', function() {
+     var currentUser;
+     currentUser = this.userId;
+     if (currentUser) {
+         return Meteor.users.find({
+             _id: currentUser
+         }, {
+         fields: {
+             "isAdmin": 1
+         }
+      });
+    } else {
+      return this.ready();
+  }
+});
+
 Meteor.methods({
-	IsAdminUser: function() {
-		var user = Meteor.users.findOne({_id: Meteor.userId()});
-		return !!user;
+	UpdateAdminUsers: function() {
+		Accounts.users.find().fetch().forEach(function(user) {
+			console.log(user);
+			Accounts.users.update({_id: user._id}, {$set: {isAdmin: isAdminUser(user.username)}});
+			console.log('correct');
+		});
 	},
 
 	AddCharacter: function(character) {
@@ -128,3 +154,4 @@ Meteor.methods({
 		return WordsList.remove({_id: id});
 	}
 });
+

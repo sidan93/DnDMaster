@@ -3,7 +3,7 @@
         {{#each get_stats_list props}}
             <div class='modifier_title' name="{{name}}">
                 <div class='info'>{{title}} {{value}}</div>
-                {{#if currentUser}}
+                {{#if currentUser.isAdmin}}
                     <div class='click_value add btn'>+1</div>
                     <div class='click_value rem btn'>-1</div>
                 {{/if}}

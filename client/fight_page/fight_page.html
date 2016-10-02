@@ -21,7 +21,7 @@
                   <div class="temp">({{fight.temp_hp}})</div>
               {{/if}}
             </div>
-            {{#if currentUser}}
+            {{#if currentUser.isAdmin}}
               <div class='set_damage'>
                 Урон: <input class='value' type='text' name='damage_value'>
                 {{#each get_dmg_list main}}
@@ -34,12 +34,12 @@
               </div>
             {{/if}}
             <div class='exp'>
-              Опыт: {{#if currentUser}}<input class='value' type='text' name='exp_value'>{{/if}}
+              Опыт: {{#if currentUser.isAdmin}}<input class='value' type='text' name='exp_value'>{{/if}}
               {{#each get_exp_list exp main}}
                 {{#if visible}}
                   <div class='modifier_title' name="{{name}}">
                     <div class='title'>{{title}} <b>{{value}}</b></div>
-                    {{#if currentUser}}
+                    {{#if currentUser.isAdmin}}
                       <div class='click_value add btn'>+</div>
                       <div class='click_value rem btn'>-</div>
                     {{/if}}

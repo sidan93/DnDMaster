@@ -6,6 +6,8 @@ import './main.html';
 
 CharacterList = new Mongo.Collection('character_list');
 
+Meteor.subscribe('userData');
+
 Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY'
 });

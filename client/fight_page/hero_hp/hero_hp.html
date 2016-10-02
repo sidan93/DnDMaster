@@ -3,10 +3,10 @@
         <div class="character_hp">
             <div class='info'>
                 <div>Жизни:</div><div class='current'>{{fight.hp_current}}</div>/<div class='max'>{{props.hp}}</div>
-                {{#if currentUser}}<input class='value' type='text' name='hp_change'>{{/if}}
+                {{#if currentUser.isAdmin}}<input class='value' type='text' name='hp_change'>{{/if}}
             </div>
             <br/>
-            {{#if currentUser}}
+            {{#if currentUser.isAdmin}}
                 <div class='modifier_title hp' name='hp'>
                     <div class='click_value add btn'>Хил</div>
                     <div class='click_value rem btn'>Урон</div>
@@ -20,9 +20,9 @@
         <div class="character_hp">
             <div class='info'>
                 <div>Временные жизни:</div><div class='current'>{{fight.temp_hp}}</div>
-                {{#if currentUser}}<input class='value' type='text' name='temp_hp_change'>{{/if}}
+                {{#if currentUser.isAdmin}}<input class='value' type='text' name='temp_hp_change'>{{/if}}
             </div>
-            {{#if currentUser}}
+            {{#if currentUser.isAdmin}}
                 <br/>
                 <div class='modifier_title max_hp' name='max_temp_hp'>
                     <div class='click_value add btn'>Добавить</div>
