@@ -13,8 +13,7 @@
 /** header */
 .header {
 	display: inline-block;
-	height: 30px;
-	margin: 10px auto;
+	margin: 10px;
 }
 
 .header li {
@@ -32,6 +31,7 @@
 	width: 100%;
 	min-height: 300px;
 	display: inline-block;
+	padding: 0px 5px;
 }
 
 .login_btn {
@@ -79,6 +79,8 @@ textarea:hover {
 	border: 1px solid #707070;
 	border-radius: 5px;
 	background: #b7b7b7;
+	margin: 5px;
+	padding: 5px;
 }
 
 li {
