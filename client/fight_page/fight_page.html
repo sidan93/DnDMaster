@@ -23,7 +23,7 @@
             </div>
             {{#if currentUser.isAdmin}}
               <div class='set_damage'>
-                Урон: <input class='value' type='text' name='damage_value'>
+                <div class='main_title'>Урон:</div><input class='value' type='text' name='damage_value'>
                 {{#each get_dmg_list main}}
                   {{#if visible}}
                     <div class='modifier_title' name="{{name}}">
@@ -34,8 +34,24 @@
               </div>
             {{/if}}
             <div class='exp'>
-              Опыт: {{#if currentUser.isAdmin}}<input class='value' type='text' name='exp_value'>{{/if}}
+              <div class='main_title'>Опыт:</div>{{#if currentUser.isAdmin}}<input class='value' type='text' name='exp_value'>{{/if}}
               {{#each get_exp_list exp main}}
+                {{#if visible}}
+                  <div class='modifier_title' name="{{name}}">
+                    <div class='title'>{{title}} <b>{{value}}</b></div>
+                    {{#if name}}
+                      {{#if currentUser.isAdmin}}
+                        <div class='click_value add btn'>+</div>
+                        <div class='click_value rem btn'>-</div>
+                      {{/if}}
+                    {{/if}}
+                  </div>
+                {{/if}}
+              {{/each}}
+            </div>
+            <div class='lvls'>
+              <div class='main_title'>Уровень:</div>
+              {{#each get_lvl_list lvls main}}
                 {{#if visible}}
                   <div class='modifier_title' name="{{name}}">
                     <div class='title'>{{title}} <b>{{value}}</b></div>
@@ -47,8 +63,6 @@
                 {{/if}}
               {{/each}}
             </div>
-          </div>
-          <div class='character_lvl'>
           </div>
         </form>
       </div>  
