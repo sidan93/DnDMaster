@@ -1,0 +1,39 @@
+<template name="spell_list_page">
+  <div class='spell_list form_area'>
+    <ul>
+      {{#each get_spell_list}}
+        <li class='spell {{selected_spell}}'>{{spell}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class='spell_edit form_area'>
+  	<div class='name'>Заклинание <b>{{get_selected_spell.spell}}</b></div>
+   	<form name='spell_edit'>
+    
+      <div class='main'>
+        <div><span>Уровень:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
+        <div><span>Количество очков:</span><input type='text' name='count_points' value='{{get_selected_spell.count_points}}'></div>
+        <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>
+        <div><span>Урон:</span><input type='text' name='damage' value='{{get_selected_spell.damage}}'></div>
+        <div><span>Попадание:</span><input type='text' name='hit' value='{{get_selected_spell.hit}}'></div>
+        <div><span>Модификатор урона:</span><input type='text' name='damage_mod' value='{{get_selected_spell.damage_mod}}'></div>
+        <div><span>Модификатор дальности:</span><input type='text' name='range_mod' value='{{get_selected_spell.range_mod}}'></div>
+        <div><span>Модификатор размера:</span><input type='text' name='size_mod' value='{{get_selected_spell.size_mod}}'></div>
+        <div><span>Модификатор количества:</span><input type='text' name='count_mod' value='{{get_selected_spell.count_mod}}'></div>
+        <div><span>Модификатор длительности:</span><input type='text' name='duration_mod' value='{{get_selected_spell.duration_mod}}'></div>
+        <div><span>Модификатор взрыва:</span><input type='text' name='explosion_mod' value='{{get_selected_spell.explosion_mod}}'></div>
+        <div><span>Описание:</span><textarea type='text' name='descr' value='{{get_selected_spell.descr}}' resize="none"></textarea></div>
+      </div>
+
+      {{#if currentUser}}
+        <div class='buttons'>
+          <div class='spell_upsert btn'>Сохранить</div>
+          {{#if get_selected_spell}}
+            <div class='spell_delete btn'>Удалить</div>
+            <div class='spell_clear btn'>Очистить</div>
+          {{/if}}
+        </div>
+      {{/if}}
+  	</form>
+  </div>
+</template> 

@@ -4,6 +4,7 @@ import { Mongo } from 'meteor/mongo';
 CharacterList = new Mongo.Collection('character_list');
 MonsterList = new Mongo.Collection('monster_list');
 WordsList = new Mongo.Collection('words_list');
+SpellList = new Mongo.Collection('spell_list');
 
 function isAdminUser(name) {
 	// Добавим права администратора для следующих пользователей
@@ -152,6 +153,76 @@ Meteor.methods({
 
 	DeleteWord: function(id) {
 		return WordsList.remove({_id: id});
+	},
+
+	/**
+	 * @param {Object} spell
+	 * @param {String} spell.spell Заклинание
+	 * @param {String} spell.lvl Уровень
+	 * @param {String} spell.count_points Количество очков
+	 * @param {String} spell.type Тип заклинания
+	 * @param {String} spell.damage Наносимый урон
+	 * @param {String} spell.hit Бонус на попадание
+	 * @param {String} spell.damage_mod Модификатор урона
+	 * @param {String} spell.range_mod Модификатор расстояния
+	 * @param {String} spell.size_mod Модификатор размера
+	 * @param {String} spell.count_mod Модификатор количества
+	 * @param {String} spell.duration_mod Модификатор длительности
+	 * @param {String} spell.explosion_mod Модификатор взрыва
+	 * @param {String} spell.descr Описание заклинания
+	 */
+	AddSpell: function(spell) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+		
+		check(spell.spell, String);
+
+		return SpellList.insert(Object.assign(spell, {
+			owner: Meteor.userId(),	
+			lastUpdateUsr: Meteor.userId(),	
+			createdTime: new Date(),
+			lastUpdate: new Date()
+		}));
+	},
+
+	/**
+	 * @param {Object} spell
+	 * @param {String} spell.spell Заклинание
+	 * @param {String} spell.lvl Уровень
+	 * @param {String} spell.count_points Количество очков
+	 * @param {String} spell.type Тип заклинания
+	 * @param {String} spell.damage Наносимый урон
+	 * @param {String} spell.hit Бонус на попадание
+	 * @param {String} spell.damage_mod Модификатор урона
+	 * @param {String} spell.range_mod Модификатор расстояния
+	 * @param {String} spell.size_mod Модификатор размера
+	 * @param {String} spell.count_mod Модификатор количества
+	 * @param {String} spell.duration_mod Модификатор длительности
+	 * @param {String} spell.explosion_mod Модификатор взрыва
+	 * @param {String} spell.descr Описание заклинания
+	 */
+	UpdateSpell: function(id, spell) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+
+		check(spell.spell, String);
+
+		return SpellList.update({
+			_id: id
+		},
+		{
+			$set: Object.assign(spell, {
+				lastUpdate: new Date(),
+				lastUpdateUsr: Meteor.userId()
+			})
+		});
+	},
+
+	DeleteSpell: function(id) {
+		if (!Meteor.userId())
+			throw "Необходимо зарегистрироваться для редактирования монстров";
+
+		return SpellList.remove({_id: id});
 	}
 });
 

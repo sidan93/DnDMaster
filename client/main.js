@@ -31,6 +31,9 @@ Template.menu.events({
 	'click .battle_page': function(event) {
 		Session.set('page_id', 6);
 	}
+	'click .spell_list_page': function(event) {
+		Session.set('page_id', 7);
+	}
 })
 
 Template.main.helpers({
