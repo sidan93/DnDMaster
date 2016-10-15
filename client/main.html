@@ -22,7 +22,6 @@
           Войти:
         {{/if}}
         {{> loginButtons}}
-        
       </div>
     </div>
   </div>
@@ -35,8 +34,8 @@
     <li class="fight_page"><div class='btn'>Бой</div></li>
     <li class="bestiary_page"><div class='btn'>Бестиарий</div></li>
     <li class="words_page"><div class='btn'>Словарь</div></li>
-    <li class="battle_page"><div class='btn'>Битва</div></li>
-    <li class="spell_list_page"><div class='btn'>Битва</div></li>
+    <li class="spell_list_page"><div class='btn'>Заклинания</div></li>
+    <!--<li class="battle_page"><div class='btn'>Битва</div></li>-->
   </ul>
 </template>
 
@@ -58,6 +57,9 @@
   {{/if}}
   {{#if show_page 6}}
     {{> battle_page}}
+  {{/if}}
+  {{#if show_page 7}}
+    {{> spell_list_page}}
   {{/if}}
 </template>
 

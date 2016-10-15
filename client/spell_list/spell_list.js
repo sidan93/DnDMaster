@@ -6,7 +6,7 @@ SpellList = new Mongo.Collection('spell_list');
 
 Template.spell_list_page.events({
 	'click .spell_list .spell': function() {
-		Session.set('selected_spell', this.spell);
+		Session.set('selected_spell', this._id);
 	},
 
 	'click .spell_upsert': function() {
@@ -27,10 +27,10 @@ Template.spell_list_page.events({
 
 Template.spell_list_page.helpers({
 	get_spell_list: function() {
-		return _.unique(SpellList.find({}, {sort: {name: 1}}).fetch(), false, function(i) {return i.spell;});
+		return SpellList.find({}, {sort: { type:1, name: 1 }});
 	},
 	selected_spell: function() {
-		if (this.spell == Session.get('selected_spell'))
+		if (this._id == Session.get('selected_spell'))
 			return 'selected';
 	},
 
@@ -42,25 +42,25 @@ Template.spell_list_page.helpers({
 
 function spell_upsert(form) {
 	var spell = {
-		spell: form.spell.value || null,
-		lvl: form.lvl.value || 0,
-		count_points: form.count_points.value || 0,
+		name: form.name.value || null,
+		lvl: parseInt(form.lvl.value) || 0,
+		points: parseInt(form.points.value) || 0,
 		type: form.type.value,
-		damage: form.damage.value,
-		hit: form.hit.value,
-		damage_mod: form.damage_mod.value,
-		range_mod: form.range_mod.value,
-		size_mod: form.size_mod.value,
-		count_mod: form.count_mod.value,
-		duration_mod: form.duration_mod.value,
-		explosion_mod: form.explosion_mod.value,
+		damage: parseInt(form.damage.value) || 0,
+		hit: parseInt(form.hit.value) || 0,
+		damage_mod: parseInt(form.damage_mod.value) || 0,
+		range_mod: parseInt(form.range_mod.value) || 0,
+		size_mod: parseInt(form.size_mod.value) || 0,
+		count_mod: parseInt(form.count_mod.value) || 0,
+		duration_mod: parseInt(form.duration_mod.value) || 0,
+		explosion_mod: parseInt(form.explosion_mod.value) || 0,
 		descr: form.descr.value
 	};
 
 	var id = Session.get('selected_spell') || null;
 	function after_save(error, result) {
 		if (!error) {
-			Session.set('selected_spell', form.spell.value);
+			Session.set('selected_spell', null);
 			$('.spell_edit form').trigger('reset'); 
 		}
 		else console.log(error);

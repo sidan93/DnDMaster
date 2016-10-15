@@ -2,17 +2,18 @@
   <div class='spell_list form_area'>
     <ul>
       {{#each get_spell_list}}
-        <li class='spell {{selected_spell}}'>{{spell}}</li>
+        <li class='spell {{selected_spell}}'>{{name}} ({{type}})</li>
       {{/each}}
     </ul>
   </div>
   <div class='spell_edit form_area'>
-  	<div class='name'>Заклинание <b>{{get_selected_spell.spell}}</b></div>
+  	<div class='name'>Заклинание <b>{{get_selected_spell.name}}</b></div>
    	<form name='spell_edit'>
     
       <div class='main'>
+        <div><span>Название:</span><input type='text' name='name' value='{{get_selected_spell.name}}'></div>
         <div><span>Уровень:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
-        <div><span>Количество очков:</span><input type='text' name='count_points' value='{{get_selected_spell.count_points}}'></div>
+        <div><span>Количество очков:</span><input type='text' name='points' value='{{get_selected_spell.points}}'></div>
         <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>
         <div><span>Урон:</span><input type='text' name='damage' value='{{get_selected_spell.damage}}'></div>
         <div><span>Попадание:</span><input type='text' name='hit' value='{{get_selected_spell.hit}}'></div>

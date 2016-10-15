@@ -1,40 +1,37 @@
 /** monster_list */
-.monster_list,
-.race_list {
+.spell_list {
 	display: inline-block;
 	width: 200px;
 	float:left;
 	margin: 5px;
 	padding: 5px;
 }
-.monster_list .monster,
-.race_list .race {
+.spell_list .spell {
 	padding-left: 15px;
 	cursor: pointer;
 }
-.monster_list .monster.selected,
-.race_list .race.selected {
+.spell_list .spell.selected {
 	font-weight: bold;
 }
 
 /** monster_edit */
-.monster_edit {
+.spell_edit {
 	display: inline-block;
 	float:left;
 	padding: 5px;
 }
 
-.monster_edit .main div span {
+.spell_edit .main div span {
 	display: inline-block;
 	vertical-align: top;
-	width: 80px;
+	width: 200px;
 	text-align: right;
 	margin-right: 5px;
 }
-.monster_edit .main div input {
+.spell_edit .main div input {
 	width: 120px;
 }
-.monster_edit .main div textarea {
+.spell_edit .main div textarea {
 	width: 120px !important;
 	height: 150px !important;
 	resize: none;
@@ -43,9 +40,9 @@
 
 /** button */
 
-.monster_edit .monster_upsert,
-.monster_edit .monster_delete,
-.monster_edit .monster_clear {
+.spell_edit .spell_upsert,
+.spell_edit .spell_delete,
+.spell_edit .spell_clear {
 	float: left;
 	width: 100px;
 }

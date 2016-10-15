@@ -157,7 +157,7 @@ Meteor.methods({
 
 	/**
 	 * @param {Object} spell
-	 * @param {String} spell.spell Заклинание
+	 * @param {String} spell.name Заклинание
 	 * @param {String} spell.lvl Уровень
 	 * @param {String} spell.count_points Количество очков
 	 * @param {String} spell.type Тип заклинания
@@ -173,9 +173,9 @@ Meteor.methods({
 	 */
 	AddSpell: function(spell) {
 		if (!Meteor.userId())
-			throw "Необходимо зарегистрироваться для редактирования монстров";
+			throw "Необходимо зарегистрироваться для редактирования заклинаний";
 		
-		check(spell.spell, String);
+		check(spell.name, String);
 
 		return SpellList.insert(Object.assign(spell, {
 			owner: Meteor.userId(),	
@@ -187,7 +187,7 @@ Meteor.methods({
 
 	/**
 	 * @param {Object} spell
-	 * @param {String} spell.spell Заклинание
+	 * @param {String} spell.name Заклинание
 	 * @param {String} spell.lvl Уровень
 	 * @param {String} spell.count_points Количество очков
 	 * @param {String} spell.type Тип заклинания
@@ -203,9 +203,9 @@ Meteor.methods({
 	 */
 	UpdateSpell: function(id, spell) {
 		if (!Meteor.userId())
-			throw "Необходимо зарегистрироваться для редактирования монстров";
+			throw "Необходимо зарегистрироваться для редактирования заклинаний";
 
-		check(spell.spell, String);
+		check(spell.name, String);
 
 		return SpellList.update({
 			_id: id
@@ -220,7 +220,7 @@ Meteor.methods({
 
 	DeleteSpell: function(id) {
 		if (!Meteor.userId())
-			throw "Необходимо зарегистрироваться для редактирования монстров";
+			throw "Необходимо зарегистрироваться для редактирования заклинаний";
 
 		return SpellList.remove({_id: id});
 	}
