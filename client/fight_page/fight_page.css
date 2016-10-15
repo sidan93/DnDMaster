@@ -32,7 +32,7 @@
 }
 
 .fight_page .character_modifier .title {
-	width: 130px;
+	min-width: 130px;
 }
 
 

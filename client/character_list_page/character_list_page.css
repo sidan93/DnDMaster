@@ -27,7 +27,6 @@
 
 .character_edit .main div span {
 	display: inline-block;
-	width: 150px;
 	text-align: right;
 	margin-right: 5px;
 }
@@ -37,7 +36,7 @@
 
 .character_edit .props div span {
 	display: inline-block;
-	width: 110px;
+	width: 140px;
 	text-align: right;
 	margin-right: 5px;
 }
@@ -46,7 +45,17 @@
 	width: 25px;
 }
 
-.character_edit .exp div span,
+.character_edit .main div,
+.character_edit .exp div {
+	text-align: right;
+	margin-right: 5px;
+}
+.character_edit .exp div span {
+	display: inline-block;
+	text-align: right;
+	margin-right: 5px;
+}
+
 .character_edit .lvls div span {
 	display: inline-block;
 	width: 150px;

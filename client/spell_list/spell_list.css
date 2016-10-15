@@ -21,10 +21,12 @@
 	padding: 5px;
 }
 
+.spell_edit .main div {
+	text-align: right;
+}
 .spell_edit .main div span {
 	display: inline-block;
 	vertical-align: top;
-	width: 200px;
 	text-align: right;
 	margin-right: 5px;
 }

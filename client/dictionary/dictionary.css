@@ -20,7 +20,7 @@
 
 .word_list ul li.word div {
 	display: inline-block;
-	width: 130px;
+	width: 150px;
 	text-align: center;
 }
 
@@ -34,7 +34,6 @@
 
 .add_new_word .word_lines {
 	display: inline-block;
-	width: 300px;
 	vertical-align: top;
 }
 
@@ -44,7 +43,7 @@
 
 .add_new_word .title {
 	display: inline-block;
-	width: 110px;
+	width: 130px;
 	text-align: right;
 }
 

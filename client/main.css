@@ -53,10 +53,14 @@
 	border-radius: 10px;
 	background: #b7b7b7;
 }
-
 .btn:hover {
 	background: #d6d6d6;
 }
+.btn.menu {
+	width:auto;
+	min-width: 150px;
+}
+
 
 input,
 select,
@@ -101,4 +105,7 @@ input.checkbox:hover {
 
 .hide {
 	display: none;
+}
+.bold {
+	font-weight: bold;
 }
