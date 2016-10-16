@@ -45,6 +45,8 @@
         <div class='exp_air'><span>Опыт магии воздуха:</span><input type='text' name='exp_air' value='{{selectedCharacter.exp.magic.air}}'></div>
         <div class='exp_shine'><span>Опыт магии света:</span><input type='text' name='exp_shine' value='{{selectedCharacter.exp.magic.shine}}'></div>
         <div class='exp_dark'><span>Опыт магии тьмы:</span><input type='text' name='exp_dark' value='{{selectedCharacter.exp.magic.dark}}'></div>
+        <div class='exp_dark'><span>Опыт магии пространства:</span><input type='text' name='exp_time' value='{{selectedCharacter.exp.magic.time}}'></div>
+        <div class='exp_dark'><span>Опыт магии времени:</span><input type='text' name='exp_space' value='{{selectedCharacter.exp.magic.space}}'></div>
         <br/>
         <div class='exp_attr1'><span>Опыт доп 1:</span><input type='text' name='exp_attr1' value='{{selectedCharacter.exp.other.attr1}}'></div>
         <div class='exp_attr2'><span>Опыт доп 2:</span><input type='text' name='exp_attr2' value='{{selectedCharacter.exp.other.attr2}}'></div>
@@ -79,6 +81,14 @@
         <div>
           <span>Тьмы:</span><input type='text' name='lvl_dark' value='{{selectedCharacter.lvls.dark}}'>
           <input class='checkbox' type='checkbox' name='magic_dark' {{characterGetCheckedAttr(selectedCharacter.main.dark)}}>
+        </div>
+        <div>
+          <span>Пространства:</span><input type='text' name='lvl_space' value='{{selectedCharacter.lvls.space}}'>
+          <input class='checkbox' type='checkbox' name='magic_space' {{characterGetCheckedAttr(selectedCharacter.main.space)}}>
+        </div>
+        <div>
+          <span>Времени:</span><input type='text' name='lvl_time' value='{{selectedCharacter.lvls.time}}'>
+          <input class='checkbox' type='checkbox' name='magic_time' {{characterGetCheckedAttr(selectedCharacter.main.time)}}>
         </div>
       </div>
       {{#if currentUser.isAdmin}}

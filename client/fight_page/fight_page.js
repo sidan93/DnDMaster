@@ -25,7 +25,9 @@ Template.fight_page.helpers({
 			{ title: 'Землей', name: 'damage_earth', visible: main.earth },
 			{ title: 'Воздухом', name: 'damage_air', visible: main.air },
 			{ title: 'Светом', name: 'damage_shine', visible: main.shine },
-			{ title: 'Тьмой', name: 'damage_dark', visible: main.dark }
+			{ title: 'Тьмой', name: 'damage_dark', visible: main.dark },
+			{ title: 'Пространством', name: 'damage_space', visible: main.space },
+			{ title: 'Временем', name: 'damage_time', visible: main.time }
 		];
 	},
 
@@ -41,6 +43,8 @@ Template.fight_page.helpers({
 			{ title: 'Магии воздуха:', value: exp.magic.air, name: 'exp_air', visible: main.air },
 			{ title: 'Магии света:', value: exp.magic.shine, name: 'exp_shine', visible: main.shine },
 			{ title: 'Магии тьмы:', value: exp.magic.dark, name: 'exp_dark', visible: main.dark },
+			{ title: 'Магии пространства:', value: exp.magic.space, name: 'exp_space', visible: main.space },
+			{ title: 'Магии времени:', value: exp.magic.time, name: 'exp_time', visible: main.time },
 			{ title: 'Доп 1:', value: exp.other.attr1, name: 'exp_attr1', visible: false },
 			{ title: 'Доп 2:', value: exp.other.attr2, name: 'exp_attr2', visible: false },
 			{ title: 'Доп 3:', value: exp.other.attr3, name: 'exp_attr3', visible: false }
@@ -59,7 +63,9 @@ Template.fight_page.helpers({
 			{ title: 'Земли:', value: lvl.earth, name:'lvl_earth', visible: main.earth,  info: 'have_info' },
 			{ title: 'Воздуха:', value: lvl.air, name:'lvl_air', visible: main.air,  info: 'have_info' },
 			{ title: 'Света:', value: lvl.shine, name:'lvl_shine', visible: main.shine,  info: 'have_info' },
-			{ title: 'Тьмы:', value: lvl.dark, name:'lvl_dark', visible: main.dark,  info: 'have_info' }
+			{ title: 'Тьмы:', value: lvl.dark, name:'lvl_dark', visible: main.dark,  info: 'have_info' },
+			{ title: 'Пространства:', value: lvl.space, name:'lvl_space', visible: main.space,  info: 'have_info' },
+			{ title: 'Времени:', value: lvl.time, name:'lvl_time', visible: main.time,  info: 'have_info' }
 		];
 	}
 });
@@ -106,7 +112,7 @@ Template.fight_page.events({
 			var modifier_value = Math.max(get_modifier(character.main_props == 'str' ? character.props.str : character.props.agi), 1);
 			character.exp.melle += value * modifier_value;
 		}
-		if (['damage_fire', 'damage_water', 'damage_earth', 'damage_air', 'damage_shine', 'damage_dark'].indexOf(modifier) != -1) {
+		if (['damage_fire', 'damage_water', 'damage_earth', 'damage_air', 'damage_shine', 'damage_dark', 'damage_space', 'damage_time'].indexOf(modifier) != -1) {
 			var anti = {
 				'fire': 'water',
 				'water': 'fire',
@@ -119,14 +125,15 @@ Template.fight_page.events({
 			var value = parseInt(form.damage_value.value || 0) || 1;
 			var stats = value * get_modifier(character.props.int);
 			character.exp.magic[school] += stats;
-			character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - Math.round(stats / 2), 0);
+			if (anti[school])
+				character.exp.magic[anti[school]] = Math.max(character.exp.magic[anti[school]] - Math.round(stats / 2), 0);
 		}
  		if (['exp_hp', 'exp_melle', 'exp_hero'].indexOf(modifier) != -1) {
 			var value = parseInt(form.exp_value.value || 0) || 1;
 			var attr = modifier.replace('exp_', '');
 			character.exp[attr] = Math.max(character.exp[attr] + value * modifierDamage, 0)
 		}
-		if (['exp_fire', 'exp_water','exp_earth', 'exp_air', 'exp_shine', 'exp_dark'].indexOf(modifier) != -1) {
+		if (['exp_fire', 'exp_water','exp_earth', 'exp_air', 'exp_shine', 'exp_dark', 'exp_space', 'exp_time'].indexOf(modifier) != -1) {
 			var value = parseInt(form.exp_value.value || 0) || 1;
 			var school = modifier.replace('exp_', '');
 			character.exp.magic[school] = Math.max(character.exp.magic[school] + value * modifierDamage, 0);
@@ -137,7 +144,7 @@ Template.fight_page.events({
 			character.exp.other[attr] = Math.max(character.exp.other[attr] + value * modifierDamage, 0);
 		}
 		if (['lvl_hp', 'lvl_hit','lvl_hero', 'lvl_dmg', 'lvl_fire', 'lvl_water',
-			'lvl_earth', 'lvl_air', 'lvl_shine', 'lvl_dark'].indexOf(modifier) != -1) {
+			'lvl_earth', 'lvl_air', 'lvl_shine', 'lvl_dark', 'lvl_space', 'lvl_time'].indexOf(modifier) != -1) {
 			var value = modifier.replace('lvl_', '');
 			character.lvls[value] = Math.min(Math.max(character.lvls[value] + modifierDamage, 0), 20);
 		}

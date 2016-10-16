@@ -32,7 +32,9 @@ Template.character_list_page.events({
 					earth: parseInt(form.exp_earth.value || 0),
 					air: parseInt(form.exp_air.value || 0),
 					shine: parseInt(form.exp_shine.value || 0),
-					dark: parseInt(form.exp_dark.value || 0)
+					dark: parseInt(form.exp_dark.value || 0),
+					space: parseInt(form.exp_space.value || 0),
+					time: parseInt(form.exp_time.value || 0)
 				},
 
 				other: {
@@ -53,7 +55,9 @@ Template.character_list_page.events({
 				earth: parseInt(form.lvl_earth.value || 0),
 				air: parseInt(form.lvl_air.value || 0),
 				shine: parseInt(form.lvl_shine.value || 0),
-				dark: parseInt(form.lvl_dark.value || 0)
+				dark: parseInt(form.lvl_dark.value || 0),
+				space: parseInt(form.lvl_space.value || 0),
+				time: parseInt(form.lvl_time.value || 0)
 			},
 
 			main: {
@@ -62,7 +66,9 @@ Template.character_list_page.events({
 				earth: form.magic_earth.checked,
 				air: form.magic_air.checked,
 				shine: form.magic_shine.checked,
-				dark: form.magic_dark.checked
+				dark: form.magic_dark.checked,
+				space: form.magic_space.checked,
+				time: form.magic_time.checked
 			}
 		};
 
