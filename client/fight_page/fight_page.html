@@ -54,7 +54,7 @@
               {{#each get_lvl_list lvls main}}
                 {{#if visible}}
                   <div class='modifier_title' name="{{name}}">
-                    <div class='title'>{{title}} <b>{{value}}</b></div>
+                    <div class='title {{info}}'>{{title}} <b>{{value}}</b></div>
                     {{#if currentUser.isAdmin}}
                       <div class='click_value add btn'>+</div>
                       <div class='click_value rem btn'>-</div>
@@ -62,6 +62,12 @@
                   </div>
                 {{/if}}
               {{/each}}
+
+              <div class="addition_info_block">
+                <div class="hit_character_box character_box hide">
+                    {{> hit_info}}
+                </div>
+              </div>
             </div>
           </div>
         </form>

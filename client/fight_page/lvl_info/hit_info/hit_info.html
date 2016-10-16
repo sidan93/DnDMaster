@@ -1,0 +1,7 @@
+<template name='hit_info'>
+    <div class='hit_info form_area'>
+        {{#each get_info lvls.hit}}
+            <div class='info {{current}}'>Уровень: {{lvl}}. Опыта: {{exp}}</div>
+        {{/each}}
+    </div>
+</template>

@@ -51,7 +51,7 @@ Template.fight_page.helpers({
 		return [
 			{ title: 'Героя:', value: lvl.hero, name:'lvl_hero', visible: true },
 			{ title: 'Жизней:', value: lvl.hp, name:'lvl_hp', visible: true },
-			{ title: 'Попадания:', value: lvl.hit, name:'lvl_hit', visible: true },
+			{ title: 'Попадания:', value: lvl.hit, name:'lvl_hit', visible: true, info: 'have_info' },
 			{ title: 'Урона:', value: lvl.dmg, name:'lvl_dmg', visible: true },
 
 			{ title: 'Огня:', value: lvl.fire, name:'lvl_fire', visible: main.fire },
@@ -166,8 +166,19 @@ Template.fight_page.events({
 	},
 
 	'mouseleave .title, mouseleave .hp': function() {
-		var $block = $(event.target).find('.character_box');
+		var $block = $(event.target).parents('.character').find('.character_box');
 		$block.addClass('hide');
+	},
+
+	'click .title': function() {
+		if (!this.info)
+			return;
+		var type = this.name.replace("lvl_", "");
+		var $block = $(event.target).parents('.character').find('.addition_info_block').find('.' + type + '_character_box');
+		var new_pos = $(event.target).position();
+		new_pos.top += 18;
+		$block.css(new_pos);
+		$block.removeClass('hide');
 	}
 });
 

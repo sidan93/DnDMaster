@@ -10,8 +10,7 @@
 	cursor: pointer;
 }
 
-.fight_page .character .title .character_box,
-.fight_page .character .hp .character_box {
+.fight_page .character_box {
 	position: absolute;
 }
 
@@ -33,6 +32,9 @@
 
 .fight_page .character_modifier .title {
 	min-width: 130px;
+}
+.fight_page .character_modifier .title.have_info {
+	cursor: pointer;
 }
 
 
