@@ -49,17 +49,17 @@ Template.fight_page.helpers({
 
 	get_lvl_list: function(lvl, main) {
 		return [
-			{ title: 'Героя:', value: lvl.hero, name:'lvl_hero', visible: true },
-			{ title: 'Жизней:', value: lvl.hp, name:'lvl_hp', visible: true },
+			{ title: 'Героя:', value: lvl.hero, name:'lvl_hero', visible: true,  info: 'have_info' },
+			{ title: 'Жизней:', value: lvl.hp, name:'lvl_hp', visible: true,  info: 'have_info' },
 			{ title: 'Попадания:', value: lvl.hit, name:'lvl_hit', visible: true, info: 'have_info' },
-			{ title: 'Урона:', value: lvl.dmg, name:'lvl_dmg', visible: true },
+			{ title: 'Урона:', value: lvl.dmg, name:'lvl_dmg', visible: true,  info: 'have_info' },
 
-			{ title: 'Огня:', value: lvl.fire, name:'lvl_fire', visible: main.fire },
-			{ title: 'Воды:', value: lvl.water, name:'lvl_water', visible: main.water },
-			{ title: 'Земли:', value: lvl.earth, name:'lvl_earth', visible: main.earth },
-			{ title: 'Воздуха:', value: lvl.air, name:'lvl_air', visible: main.air },
-			{ title: 'Света:', value: lvl.shine, name:'lvl_shine', visible: main.shine },
-			{ title: 'Тьмы:', value: lvl.dark, name:'lvl_dark', visible: main.dark }
+			{ title: 'Огня:', value: lvl.fire, name:'lvl_fire', visible: main.fire,  info: 'have_info' },
+			{ title: 'Воды:', value: lvl.water, name:'lvl_water', visible: main.water,  info: 'have_info' },
+			{ title: 'Земли:', value: lvl.earth, name:'lvl_earth', visible: main.earth,  info: 'have_info' },
+			{ title: 'Воздуха:', value: lvl.air, name:'lvl_air', visible: main.air,  info: 'have_info' },
+			{ title: 'Света:', value: lvl.shine, name:'lvl_shine', visible: main.shine,  info: 'have_info' },
+			{ title: 'Тьмы:', value: lvl.dark, name:'lvl_dark', visible: main.dark,  info: 'have_info' }
 		];
 	}
 });

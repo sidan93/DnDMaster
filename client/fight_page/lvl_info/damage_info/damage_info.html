@@ -1,0 +1,7 @@
+<template name='dmg_info'>
+    <div class='dmg_info form_area'>
+        {{#each get_info lvls.dmg}}
+            <div class='info {{current}}'>Уровень: {{lvl}}. Опыта: {{exp}}. Дайс урона: {{dice}}.</div>
+        {{/each}}
+    </div>
+</template>
