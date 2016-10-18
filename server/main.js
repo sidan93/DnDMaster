@@ -9,7 +9,6 @@ SpellList = new Mongo.Collection('spell_list');
 function isAdminUser(name) {
 	// Добавим права администратора для следующих пользователей
 	var isAdmin = ['sidan93', 'uromir', 'Arhael']
-	console.log('test');
 	return isAdmin.indexOf(name) != -1;	
 }
 
@@ -35,9 +34,7 @@ Meteor.publish('userData', function() {
 Meteor.methods({
 	UpdateAdminUsers: function() {
 		Accounts.users.find().fetch().forEach(function(user) {
-			console.log(user);
 			Accounts.users.update({_id: user._id}, {$set: {isAdmin: isAdminUser(user.username)}});
-			console.log('correct');
 		});
 	},
 

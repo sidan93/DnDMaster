@@ -172,7 +172,14 @@ Template.fight_page.events({
 		$block.removeClass('hide');
 	},
 
-	'mouseleave .title, mouseleave .hp': function() {
+	'mouseleave .character_box ': function() {
+		var $block = $(event.target).parents('.character').find('.character_box');
+		$block.addClass('hide');
+	},
+
+	'mouseleave .title': function() {
+		if (!this.info)
+			return;
 		var $block = $(event.target).parents('.character').find('.character_box');
 		$block.addClass('hide');
 	},
