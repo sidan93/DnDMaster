@@ -7,6 +7,7 @@
           <td>Тип</td>
           <td>Школа</td>
           <td>Бросок</td>
+          <td>Доп эффект</td>
           <td>Очки: У/П/Д/Р/К/Д/В </td>
           <td>Доступно</td>
           <td>Описание</td>
@@ -18,6 +19,7 @@
           <td>{{type}}</td>
           <td>{{school}}</td>
           <td>{{dices}}</td>
+          <td>{{effect}}</td>
           <td>{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
           <td>{{users}}</td>
           <td>{{descr}}</td>
@@ -36,6 +38,7 @@
         <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>
         <div><span>Школа:</span><input type='text' name='school' value='{{get_selected_spell.school}}'></div>
         <div><span>Бросок:</span><input type='text' name='dices' value='{{get_selected_spell.dices}}'></div>
+        <div><span>Доп эффект:</span><input type='text' name='effect' value='{{get_selected_spell.effect}}'></div>
         <div><span>Количество очков:</span><input type='text' name='points' value='{{get_selected_spell.points}}'></div>
         <div><span>Модификатор силы:</span><input type='text' name='power_mod' value='{{get_selected_spell.power_mod}}'></div>
         <div><span>Модификатор попадания:</span><input type='text' name='hit_mod' value='{{get_selected_spell.hit_mod}}'></div>

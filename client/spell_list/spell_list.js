@@ -49,6 +49,7 @@ function spell_upsert(form) {
 		type: form.type.value,
 		school: form.school.value,
 		dices: form.dices.value,
+		effect: form.effect.value,
 		hit_mod: parseInt(form.hit_mod.value) || 0,
 		power_mod: parseInt(form.power_mod.value) || 0,
 		range_mod: parseInt(form.range_mod.value) || 0,
