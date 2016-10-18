@@ -27,7 +27,7 @@ Template.spell_list_page.events({
 
 Template.spell_list_page.helpers({
 	get_spell_list: function() {
-		return SpellList.find({}, {sort: { type:1, name: 1 }});
+		return SpellList.find({}, {sort: { lvl:-1, type:1, name: 1 }});
 	},
 	selected_spell: function() {
 		if (this._id == Session.get('selected_spell'))
@@ -43,12 +43,14 @@ Template.spell_list_page.helpers({
 function spell_upsert(form) {
 	var spell = {
 		name: form.name.value || null,
+		users: form.users.value || null,
 		lvl: parseInt(form.lvl.value) || 0,
 		points: parseInt(form.points.value) || 0,
 		type: form.type.value,
-		damage: parseInt(form.damage.value) || 0,
-		hit: parseInt(form.hit.value) || 0,
-		damage_mod: parseInt(form.damage_mod.value) || 0,
+		school: form.school.value,
+		dices: form.dices.value,
+		hit_mod: parseInt(form.hit_mod.value) || 0,
+		power_mod: parseInt(form.power_mod.value) || 0,
 		range_mod: parseInt(form.range_mod.value) || 0,
 		size_mod: parseInt(form.size_mod.value) || 0,
 		count_mod: parseInt(form.count_mod.value) || 0,

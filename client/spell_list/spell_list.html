@@ -1,10 +1,29 @@
 <template name="spell_list_page">
   <div class='spell_list form_area'>
-    <ul>
+    <table cellpadding="0" cellspacing="0"> 
+        <tr class="title">
+          <td>Название</td>
+          <td>Уровень</td>
+          <td>Тип</td>
+          <td>Школа</td>
+          <td>Бросок</td>
+          <td>Очки: У/П/Д/Р/К/Д/В </td>
+          <td>Доступно</td>
+          <td>Описание</td>
+        </tr>
       {{#each get_spell_list}}
-        <li class='spell {{selected_spell}}'>{{name}} ({{type}})</li>
+        <tr class='spell {{selected_spell}}'>
+          <td>{{name}}</td>
+          <td>{{lvl}}</td>
+          <td>{{type}}</td>
+          <td>{{school}}</td>
+          <td>{{dices}}</td>
+          <td>{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
+          <td>{{users}}</td>
+          <td>{{descr}}</td>
+        </tr>
       {{/each}}
-    </ul>
+    </table>
   </div>
   <div class='spell_edit form_area'>
   	<div class='name'>Заклинание <b>{{get_selected_spell.name}}</b></div>
@@ -12,12 +31,14 @@
     
       <div class='main'>
         <div><span>Название:</span><input type='text' name='name' value='{{get_selected_spell.name}}'></div>
-        <div><span>Уровень:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
-        <div><span>Количество очков:</span><input type='text' name='points' value='{{get_selected_spell.points}}'></div>
+        <div><span>Кому доступно:</span><input type='text' name='users' value='{{get_selected_spell.users}}'></div>
+        <div><span>Уровень заклинания:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
         <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>
-        <div><span>Урон:</span><input type='text' name='damage' value='{{get_selected_spell.damage}}'></div>
-        <div><span>Попадание:</span><input type='text' name='hit' value='{{get_selected_spell.hit}}'></div>
-        <div><span>Модификатор урона:</span><input type='text' name='damage_mod' value='{{get_selected_spell.damage_mod}}'></div>
+        <div><span>Школа:</span><input type='text' name='school' value='{{get_selected_spell.school}}'></div>
+        <div><span>Бросок:</span><input type='text' name='dices' value='{{get_selected_spell.dices}}'></div>
+        <div><span>Количество очков:</span><input type='text' name='points' value='{{get_selected_spell.points}}'></div>
+        <div><span>Модификатор силы:</span><input type='text' name='power_mod' value='{{get_selected_spell.power_mod}}'></div>
+        <div><span>Модификатор попадания:</span><input type='text' name='hit_mod' value='{{get_selected_spell.hit_mod}}'></div>
         <div><span>Модификатор дальности:</span><input type='text' name='range_mod' value='{{get_selected_spell.range_mod}}'></div>
         <div><span>Модификатор размера:</span><input type='text' name='size_mod' value='{{get_selected_spell.size_mod}}'></div>
         <div><span>Модификатор количества:</span><input type='text' name='count_mod' value='{{get_selected_spell.count_mod}}'></div>
