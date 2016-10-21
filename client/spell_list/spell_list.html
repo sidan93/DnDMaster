@@ -1,31 +1,106 @@
 <template name="spell_list_page">
-  <div class='spell_list form_area'>
-    <table cellpadding="0" cellspacing="0"> 
-        <tr class="title">
-          <td>Название</td>
-          <td>Уровень</td>
-          <td>Тип</td>
-          <td>Школа</td>
-          <td>Бросок</td>
-          <td>Доп эффект</td>
-          <td>Очки: У/П/Д/Р/К/Д/В </td>
-          <td>Доступно</td>
-          <td>Описание</td>
-        </tr>
-      {{#each get_spell_list}}
-        <tr class='spell {{selected_spell}}'>
-          <td>{{name}}</td>
-          <td>{{lvl}}</td>
-          <td>{{type}}</td>
-          <td>{{school}}</td>
-          <td>{{dices}}</td>
-          <td>{{effect}}</td>
-          <td>{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
-          <td>{{users}}</td>
-          <td>{{descr}}</td>
-        </tr>
-      {{/each}}
-    </table>
+  <div class="spell_content">
+    <div class="form_area spell_nav">
+      <div class="table_title">Список заклинаний:</div>
+      <ul>
+        {{#each get_nav_spell_list}}
+          <li class="nav_spell {{selected_nav_spell}}">{{name}} : {{type}} : {{school}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    {{#if get_non_ritual_spell_list true}}
+      <div class='spell_list form_area'>
+        <div class="table_title">Заклинания</div>
+        <table cellpadding="0" cellspacing="0"> 
+            <tr class="title">
+              <td class="name">Название</td>
+              <td class="lvl">Уровень</td>
+              <td class="type">Тип</td>
+              <td class="school">Школа</td>
+              <td class="dices">Бросок</td>
+              <td class="effect">Доп эффект</td>
+              <td class="points">Очки: У/П/Д/Р/К/Д/В</td>
+              <td class="users">Доступно</td>
+              <td class="descr">Описание</td>
+            </tr>
+          {{#each get_non_ritual_spell_list}}
+            <tr class='spell {{selected_spell}}'>
+              <td class="name">{{name}}</td>
+              <td class="lvl">{{lvl}}</td>
+              <td class="type">{{type}}</td>
+              <td class="school">{{school}}</td>
+              <td class="dices">{{dices}}</td>
+              <td class="effect">{{effect}}</td>
+              <td class="points">{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
+              <td class="users">{{users}}</td>
+              <td class="descr">{{descr}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/if}}
+    {{#if get_ritual_spell_list true}}
+      <div class='spell_list form_area'>
+        <div class="table_title">Ритуалы</div>
+        <table cellpadding="0" cellspacing="0"> 
+            <tr class="title">
+              <td class="name">Название</td>
+              <td class="lvl">Уровень</td>
+              <td class="lvl">Ритуал</td>
+              <td class="type">Тип</td>
+              <td class="school">Школа</td>
+              <td class="dices">Бросок</td>
+              <td class="effect">Доп эффект</td>
+              <td class="points">Очки: У/П/Д/Р/К/Д/В</td>
+              <td class="users">Доступно</td>
+              <td class="descr">Описание</td>
+            </tr>
+          {{#each get_ritual_spell_list}}
+            <tr class='spell {{selected_spell}}'>
+              <td class="name">{{name}}</td>
+              <td class="lvl">{{lvl}}</td>
+              <td class="ritual">{{ritual}}</td>
+              <td class="type">{{type}}</td>
+              <td class="school">{{school}}</td>
+              <td class="dices">{{dices}}</td>
+              <td class="effect">{{effect}}</td>
+              <td class="points">{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
+              <td class="users">{{users}}</td>
+              <td class="descr">{{descr}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/if}}
+    {{#if get_non_spell_list true}}
+      <div class='spell_list form_area'>
+        <div class="table_title">Неизвестное</div>
+        <table cellpadding="0" cellspacing="0"> 
+            <tr class="title">
+              <td class="name">Название</td>
+              <td class="lvl">Уровень</td>
+              <td class="type">Тип</td>
+              <td class="school">Школа</td>
+              <td class="dices">Бросок</td>
+              <td class="effect">Доп эффект</td>
+              <td class="points">Очки: У/П/Д/Р/К/Д/В </td>
+              <td class="descr">Описание</td>
+            </tr>
+          {{#each get_non_spell_list}}
+            <tr class='spell {{selected_spell}}'>
+              <td class="name">{{name}}</td>
+              <td class="lvl">{{lvl}}</td>
+              <td class="type">{{type}}</td>
+              <td class="school">{{school}}</td>
+              <td class="dices">{{dices}}</td>
+              <td class="effect">{{effect}}</td>
+              <td class="points">{{points}}: {{power_mod}}/{{hit_mod}}/{{range_mod}}/{{size_mod}}/{{count_mod}}/{{duration_mod}}/{{explosion_mod}} </td>
+              <td class="descr">{{descr}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/if}} 
   </div>
   <div class='spell_edit form_area'>
   	<div class='name'>Заклинание <b>{{get_selected_spell.name}}</b></div>
@@ -36,6 +111,7 @@
         <div><span>Кому доступно:</span><input type='text' name='users' value='{{get_selected_spell.users}}'></div>
         <div><span>Уровень заклинания:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
         <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>
+        <div><span>Ритуал:</span><input type='text' name='ritual' value='{{get_selected_spell.ritual}}'></div>
         <div><span>Школа:</span><input type='text' name='school' value='{{get_selected_spell.school}}'></div>
         <div><span>Бросок:</span><input type='text' name='dices' value='{{get_selected_spell.dices}}'></div>
         <div><span>Доп эффект:</span><input type='text' name='effect' value='{{get_selected_spell.effect}}'></div>

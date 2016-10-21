@@ -1,18 +1,44 @@
+.selected {
+	font-weight: bold;
+}
+
+.table_title {
+	font-weight: bold;
+}
+
+.spell_content {
+	display: inline-block;
+	width: 1300px;
+}
+
+
+
+/******** Навигация ***/
+.spell_nav {
+	display: block;
+	width: 250px;
+	float: left;
+}
+.spell_nav .nav_spell {
+	cursor: pointer;
+	margin-left: 10px;
+}
+/******** Конец навигации ***/
+
 .spell_list {
 	display: block;
 	margin: 5px;
 	padding: 5px;
-	width: 100%;
+	width: 1000px;
+	float: right;
 }
 .spell_list .spell {
 	padding-left: 15px;
 	cursor: pointer;
 }
-.spell_list .spell.selected {
-	font-weight: bold;
-}
 
 .spell_list table {
+	width: 1000px;
 }
 .spell_list table tr td {
 	text-align: center;
@@ -27,9 +53,35 @@
 	border-right: 1px solid black;
 }
 
+/****** Стили колонок в таблице ***************/
+.spell_list table td.name {
+	width: 200px;
+}
+
+.spell_list table td.lvl,
+.spell_list table td.type,
+.spell_list table td.school, 
+.spell_list table td.ritual, 
+.spell_list table td.dices {
+	width: 50px;
+}
+
+.spell_list table td.effect,
+.spell_list table td.points {
+	width: 170px;
+}
+.spell_list table td.users {
+	width: 70px;
+}
+.spell_list table td.descr {
+	width: 200px;
+}
+/****** Конец стилей колонок в таблице ********/
+
 .spell_edit {
 	display: inline-block;
 	padding: 5px;
+	width: 400px;
 }
 
 .spell_edit .main div {
@@ -42,10 +94,10 @@
 	margin-right: 5px;
 }
 .spell_edit .main div input {
-	width: 120px;
+	width: 170px;
 }
 .spell_edit .main div textarea {
-	width: 120px !important;
+	width: 170px !important;
 	height: 150px !important;
 	resize: none;
 	font-size: 12px;
