@@ -7,6 +7,7 @@ SpellList = new Mongo.Collection('spell_list');
 Template.spell_list_page.events({
 	'click .spell_nav .nav_spell': function() {
 		Session.set('selected_nav_spell', getUniqValue(this));
+		Session.set('selected_spell', null);
 	},
 	'click .spell_list .spell': function() {
 		Session.set('selected_spell', this._id);
@@ -96,6 +97,7 @@ Template.spell_list_page.helpers({
 function spell_upsert(form) {
 	var spell = {
 		name: form.name.value || null,
+		sub_name: form.sub_name.value || null,
 		users: form.users.value || null,
 		lvl: parseInt(form.lvl.value) || 0,
 		points: parseInt(form.points.value) || 0,

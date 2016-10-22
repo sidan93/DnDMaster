@@ -14,6 +14,7 @@
         <table cellpadding="0" cellspacing="0"> 
             <tr class="title">
               <td class="name">Название</td>
+              <td class="sub_name">Подназвание</td>
               <td class="lvl">Уровень</td>
               <td class="type">Тип</td>
               <td class="school">Школа</td>
@@ -26,6 +27,7 @@
           {{#each get_non_ritual_spell_list}}
             <tr class='spell {{selected_spell}}'>
               <td class="name">{{name}}</td>
+              <td class="sub_name">{{sub_name}}</td>
               <td class="lvl">{{lvl}}</td>
               <td class="type">{{type}}</td>
               <td class="school">{{school}}</td>
@@ -45,6 +47,7 @@
         <table cellpadding="0" cellspacing="0"> 
             <tr class="title">
               <td class="name">Название</td>
+              <td class="sub_name">Подназвание</td>
               <td class="lvl">Уровень</td>
               <td class="lvl">Ритуал</td>
               <td class="type">Тип</td>
@@ -58,6 +61,7 @@
           {{#each get_ritual_spell_list}}
             <tr class='spell {{selected_spell}}'>
               <td class="name">{{name}}</td>
+              <td class="sub_name">{{sub_name}}</td>
               <td class="lvl">{{lvl}}</td>
               <td class="ritual">{{ritual}}</td>
               <td class="type">{{type}}</td>
@@ -78,6 +82,7 @@
         <table cellpadding="0" cellspacing="0"> 
             <tr class="title">
               <td class="name">Название</td>
+              <td class="sub_name">Подназвание</td>
               <td class="lvl">Уровень</td>
               <td class="type">Тип</td>
               <td class="school">Школа</td>
@@ -89,6 +94,7 @@
           {{#each get_non_spell_list}}
             <tr class='spell {{selected_spell}}'>
               <td class="name">{{name}}</td>
+              <td class="sub_name">{{sub_name}}</td>
               <td class="lvl">{{lvl}}</td>
               <td class="type">{{type}}</td>
               <td class="school">{{school}}</td>
@@ -109,6 +115,7 @@
     
       <div class='main'>
         <div><span>Название:</span><input type='text' name='name' value='{{get_selected_spell.name}}'></div>
+        <div><span>Подназвание:</span><input type='text' name='sub_name' value='{{get_selected_spell.sub_name}}'></div>
         <div><span>Кому доступно:</span><input type='text' name='users' value='{{get_selected_spell.users}}'></div>
         <div><span>Уровень заклинания:</span><input type='text' name='lvl' value='{{get_selected_spell.lvl}}'></div>
         <div><span>Тип:</span><input type='text' name='type' value='{{get_selected_spell.type}}'></div>

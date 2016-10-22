@@ -54,7 +54,8 @@
 }
 
 /****** Стили колонок в таблице ***************/
-.spell_list table td.name {
+.spell_list table td.name,
+.spell_list table td.sub_name {
 	width: 200px;
 }
 
