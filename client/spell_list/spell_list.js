@@ -27,7 +27,7 @@ Template.spell_list_page.events({
 
 Template.spell_list_page.helpers({
 	get_nav_spell_list: function () {
-		return _.unique(SpellList.find({}, {sort: {name: 1}}).fetch(), false, function(i) {
+		return _.unique(SpellList.find({}, {sort: {school: 1, type: 1, name: 1}}).fetch(), false, function(i) {
 			return getUniqValue(i);
 		});
 	},
